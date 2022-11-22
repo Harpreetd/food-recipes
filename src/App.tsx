@@ -1,6 +1,43 @@
 import React from "react";
 import { useState, useEffect } from "react";
+// import RecipeList from "./Components/RecipeList/RecipeList";
 import { MealApiResponse, useFetch } from "./Hooks/useFetch";
+
+// interface IRecipeListProps {
+//   sendData: {
+//     mealData: {
+//       strArea: string;
+//       strCategory: string;
+//       strInstructions: string;
+//       strMeal: string;
+//       strMealThumb: string;
+//       strSource: string;
+//       strTags: string;
+//       strYoutube: string;
+//       strIngredient1: string;
+//       strIngredient2: string;
+//       strIngredient3: string;
+//     }[];
+//   };
+// }
+
+const RecipeList = (props: any) => {
+  const meals = props.sendData;
+  return (
+    <div>
+      {Array.isArray(meals)
+        ? meals.map((meal, index) => {
+            return (
+              <div key={index}>
+                <h2>Recipe Name: {meal.strMeal}</h2>
+                <h3>From : {meal.strArea}</h3>
+              </div>
+            );
+          })
+        : "No Data Available"}
+    </div>
+  );
+};
 
 const App = () => {
   const [mealData, setMealData] = useState<MealApiResponse>();
@@ -16,8 +53,9 @@ const App = () => {
   console.log(mealData);
   return (
     <div>
+      <RecipeList sendData={mealData} />
       {/* should be in a component */}
-      {Array.isArray(mealData)
+      {/* {Array.isArray(mealData)
         ? mealData.map((meal, index) => {
             return (
               <div key={index}>
@@ -26,7 +64,7 @@ const App = () => {
               </div>
             );
           })
-        : "No Data Available"}
+        : "No Data Available"} */}
     </div>
   );
 };
