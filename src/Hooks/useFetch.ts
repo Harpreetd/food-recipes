@@ -2,16 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export type MealApiResponse = {
-  status: number;
-  statusText: string;
   data: any;
   error: any;
   loading: boolean;
 };
 
 export const useFetch = (url: string): MealApiResponse => {
-  const [status, setStatus] = useState<number>(0);
-  const [statusText, setStatusText] = useState<string>("");
   const [data, setData] = useState<any>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,10 +16,9 @@ export const useFetch = (url: string): MealApiResponse => {
     setLoading(true);
     try {
       const apiResponse = await fetch(url);
-
       const json = await apiResponse.json();
-      console.log(apiResponse, json);
-      setData(json);
+      console.log(json.meals);
+      setData(json.meals);
     } catch (error) {
       setError(error);
     }
@@ -33,6 +28,6 @@ export const useFetch = (url: string): MealApiResponse => {
   useEffect(() => {
     getApiData();
   }, [url]);
-  return { status, statusText, data, error, loading };
+  return { data, error, loading };
 };
 // export default useFetch;
