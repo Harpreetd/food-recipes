@@ -5,7 +5,7 @@ import { MealApiResponse, useFetch } from "./Hooks/useFetch";
 const App = () => {
   const [mealData, setMealData] = useState<MealApiResponse>();
   const hookData = useFetch(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
+    "https://www.themealdb.com/api/json/v1/1/search.php?s="
   );
   // console.log(hookData);
   useEffect(() => {
@@ -16,6 +16,7 @@ const App = () => {
   console.log(mealData);
   return (
     <div>
+      {/* should be in a component */}
       {mealData &&
         mealData.map((meal, index) => {
           return (
