@@ -17,15 +17,16 @@ const App = () => {
   return (
     <div>
       {/* should be in a component */}
-      {mealData &&
-        mealData.map((meal, index) => {
-          return (
-            <div key={index}>
-              <h2>Recipe Name: {meal.strMeal}</h2>
-              <h3>From : {meal.strArea}</h3>
-            </div>
-          );
-        })}
+      {Array.isArray(mealData)
+        ? mealData.map((meal, index) => {
+            return (
+              <div key={index}>
+                <h2>Recipe Name: {meal.strMeal}</h2>
+                <h3>From : {meal.strArea}</h3>
+              </div>
+            );
+          })
+        : "No Data Available"}
     </div>
   );
 };

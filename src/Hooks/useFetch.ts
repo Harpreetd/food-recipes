@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export type MealApiResponse = {
-  map(arg0: (meal: any, index: any) => JSX.Element): React.ReactNode;
   strArea: string;
   strCategory: string;
   strInstructions: string;
