@@ -14,14 +14,17 @@ const App = () => {
   const hookData = useFetch(url);
 
   useEffect(() => {
-    if (hookData) {
-      setMealData(hookData.apiData);
-    }
-  }, [hookData]);
-  console.log(mealData);
+    setMealData(hookData.apiData);
+  }, [hookData, url]);
 
   const searchRecipe = () => {
     setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+  };
+  const searchByCountry = (countryName: string) => {
+    setUrl(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${countryName}`
+    );
+    console.log("Country button clicked", hookData.apiData);
   };
   return (
     <div>
@@ -33,7 +36,9 @@ const App = () => {
         />
         <button onClick={searchRecipe}>Search</button>
       </div>
-
+      <div>
+        <button onClick={() => searchByCountry("indian")}>Cusine</button>
+      </div>
       <RecipeList mealsList={mealData} />
     </div>
   );
