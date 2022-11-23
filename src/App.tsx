@@ -3,30 +3,16 @@ import { useState, useEffect } from "react";
 // import RecipeList from "./Components/RecipeList/RecipeList";
 import { MealApiResponse, useFetch } from "./Hooks/useFetch";
 
-// interface IRecipeListProps {
-//   sendData: {
-//     mealData: {
-//       strArea: string;
-//       strCategory: string;
-//       strInstructions: string;
-//       strMeal: string;
-//       strMealThumb: string;
-//       strSource: string;
-//       strTags: string;
-//       strYoutube: string;
-//       strIngredient1: string;
-//       strIngredient2: string;
-//       strIngredient3: string;
-//     }[];
-//   };
-// }
+interface IRecipeListProps {
+  mealsList?: MealApiResponse;
+}
 
-const RecipeList = (props: any) => {
-  const meals = props.sendData;
+const RecipeList = ({ mealsList }: IRecipeListProps) => {
+  // const { mealsList } = sendData;
   return (
     <div>
-      {Array.isArray(meals)
-        ? meals.map((meal, index) => {
+      {Array.isArray(mealsList)
+        ? mealsList.map((meal, index) => {
             return (
               <div key={index}>
                 <h2>Recipe Name: {meal.strMeal}</h2>
@@ -53,7 +39,7 @@ const App = () => {
   console.log(mealData);
   return (
     <div>
-      <RecipeList sendData={mealData} />
+      <RecipeList mealsList={mealData} />
       {/* should be in a component */}
       {/* {Array.isArray(mealData)
         ? mealData.map((meal, index) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export type MealApiResponse = {
+export interface MealApiResponse {
   strArea: string;
   strCategory: string;
   strInstructions: string;
@@ -13,7 +13,7 @@ export type MealApiResponse = {
   strIngredient1: string;
   strIngredient2: string;
   strIngredient3: string;
-};
+}
 
 export const useFetch = (url: string) => {
   const [apiData, setApiData] = useState<MealApiResponse>();
