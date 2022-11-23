@@ -33,16 +33,17 @@ const App = () => {
   };
   const countrySelection = (country: string): void => {
     setSelectCountry(country);
+    setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`);
   };
   const searchRecipe = () => {
     setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
   };
-  const searchByCountry = (countryName: string) => {
-    setUrl(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${countryName}`
-    );
-    console.log("Country button clicked", hookData.apiData);
-  };
+  // const searchByCountry = (countryName: string) => {
+  //   setUrl(
+  //     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${countryName}`
+  //   );
+  //   console.log("Country button clicked", hookData.apiData);
+  // };
   return (
     <>
       <div>
@@ -73,7 +74,7 @@ const App = () => {
         <button onClick={searchRecipe}>Search</button>
       </div>
       <div>
-        <button onClick={() => searchByCountry("indian")}>Cusine</button>
+        {/* <button onClick={() => searchByCountry("indian")}>Cusine</button> */}
       </div>
       <RecipeList mealsList={mealData} />
     </>

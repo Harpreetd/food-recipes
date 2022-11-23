@@ -5,6 +5,7 @@ type DropdownProps = {
   showDropdown: boolean;
   toggleDropdown: Function;
   countrySelection: Function;
+  onChange?: Function;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
