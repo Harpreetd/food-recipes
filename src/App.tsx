@@ -1,14 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 // import RecipeList from "./Components/RecipeList/RecipeList";
-import { MealApiResponse, useFetch } from "./Hooks/useFetch";
-
-interface IRecipeListProps {
-  mealsList?: MealApiResponse;
-}
+import { useFetch } from "./Hooks/useFetch";
+import { MealApiResponse, IRecipeListProps } from "./Interface/Interface";
 
 const RecipeList = ({ mealsList }: IRecipeListProps) => {
-  // const { mealsList } = sendData;
   return (
     <div>
       {Array.isArray(mealsList)

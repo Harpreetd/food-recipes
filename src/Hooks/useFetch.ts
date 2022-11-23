@@ -1,19 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { MealApiResponse } from "../Interface/Interface";
 
-export interface MealApiResponse {
-  strArea: string;
-  strCategory: string;
-  strInstructions: string;
-  strMeal: string;
-  strMealThumb: string;
-  strSource: string;
-  strTags: string;
-  strYoutube: string;
-  strIngredient1: string;
-  strIngredient2: string;
-  strIngredient3: string;
-}
 
 export const useFetch = (url: string) => {
   const [apiData, setApiData] = useState<MealApiResponse>();
