@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import RecipeList from "./Components/RecipeList/RecipeList";
 import { useFetch } from "./Hooks/useFetch";
-import { MealApiResponse } from "./Interface/Interface";
+import { IMealApiResponse } from "./Interface/Interface";
 import "./App.css";
 
 const App = () => {
   const [url, setUrl] = useState<string>(
     "https://www.themealdb.com/api/json/v1/1/search.php?s="
   );
-  const [mealData, setMealData] = useState<MealApiResponse>();
+  const [mealData, setMealData] = useState<IMealApiResponse>();
   const [search, setSearch] = useState<string>("");
   const hookData = useFetch(url);
 
@@ -28,7 +28,7 @@ const App = () => {
       <div>
         <input
           type="input"
-          placeholder="search recipe"
+          placeholder="search recipe name"
           onChange={(e) => setSearch(e.target.value)}
         />
         <button onClick={searchRecipe}>Search</button>

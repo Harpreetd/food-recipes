@@ -1,4 +1,4 @@
-export interface MealApiResponse {
+export interface IMealApiResponse {
   strArea: string;
   strCategory: string;
   strInstructions: string;
@@ -17,5 +17,9 @@ export interface MealApiResponse {
 }
 
 export interface IRecipeListProps {
-  mealsList?: MealApiResponse;
+  mealsList?: IMealApiResponse;
+}
+
+export interface IRecipeCardProps {
+  value: IMealApiResponse;
 }

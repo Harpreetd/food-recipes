@@ -1,10 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { MealApiResponse } from "../Interface/Interface";
-
+import { IMealApiResponse } from "../Interface/Interface";
 
 export const useFetch = (url: string) => {
-  const [apiData, setApiData] = useState<MealApiResponse>();
+  const [apiData, setApiData] = useState<IMealApiResponse>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -17,7 +16,6 @@ export const useFetch = (url: string) => {
     try {
       const apiResponse = await fetch(url);
       const json = await apiResponse.json();
-      console.log(json.meals);
       setApiData(json.meals);
     } catch (error) {
       setError(error);
@@ -25,7 +23,7 @@ export const useFetch = (url: string) => {
     setLoading(false);
   };
 
-  return { apiData: apiData };
+  return { apiData: apiData, error: error, loading: loading };
 };
 
 // import React from "react";
