@@ -22,6 +22,7 @@ const App = () => {
   useEffect(() => {
     setMealData(hookData.apiData);
   }, [hookData, url]);
+
   const countries = (): string[] => {
     const countryNames: string[] = [];
     if (mealData !== undefined) {
@@ -34,19 +35,24 @@ const App = () => {
     } else {
       console.log("no country");
     }
-    return countryNames;
+    const uniqueCountryNames = [...new Set(countryNames)];
+    console.log("unique country names", uniqueCountryNames);
+    return uniqueCountryNames;
   };
+
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
+    console.log("inside toggle drop down", countries());
   };
-  const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
-    if (event.currentTarget === event.target) {
-      setShowDropdown(false);
-    }
-  };
+  // const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
+  //   if (event.currentTarget === event.target) {
+  //     setShowDropdown(false);
+  //   }
+  // };
   const countrySelection = (country: string): void => {
     setSelectItem(country);
     setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`);
+    setShowDropdown(true);
   };
   const searchRecipe = () => {
     setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
@@ -60,9 +66,9 @@ const App = () => {
         </div>
         <button
           onClick={(): void => toggleDropdown()}
-          onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
-            dismissHandler(e)
-          }
+          // onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
+          //   dismissHandler(e)
+          // }
         >
           <div>{selectItem ? "Select: " + selectItem : "Select..."}</div>
           {showDropdown && (
