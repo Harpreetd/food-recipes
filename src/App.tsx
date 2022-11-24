@@ -16,13 +16,16 @@ const App = () => {
   const [search, setSearch] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [selectItem, setSelectItem] = useState<string>("");
-
+  const [filteredData, setFilteredData] = useState<IMealApiResponse>();
   const hookData = useFetch(url);
 
   useEffect(() => {
     setMealData(hookData.apiData);
-  }, [hookData, url]);
-
+    console.log("first useEffect", mealData);
+  }, [hookData]);
+  useEffect(() => {
+    console.log("second useEffect", mealData);
+  }, [mealData]);
   const countries = (): string[] => {
     const countryNames: string[] = [];
     if (mealData !== undefined) {
@@ -36,13 +39,11 @@ const App = () => {
       console.log("no country");
     }
     const uniqueCountryNames = [...new Set(countryNames)];
-    console.log("unique country names", uniqueCountryNames);
     return uniqueCountryNames;
   };
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
-    console.log("inside toggle drop down", countries());
   };
   const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
     if (event.currentTarget === event.target) {
@@ -51,11 +52,14 @@ const App = () => {
   };
   const countrySelection = (country: string): void => {
     setSelectItem(country);
-    if (selectItem == "") {
-      setUrl("https://www.themealdb.com/api/json/v1/1/search.php?s=");
-    } else {
-      setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`);
-    }
+    let filteredMeals =
+      mealData &&
+      mealData.filter((meal: { strArea: string }) => {
+        return meal.strArea === country;
+      });
+    setFilteredData(filteredMeals);
+    // setMealData(filteredMeals);
+    console.log("meal data inside country fucntion", mealData);
     setShowDropdown(!showDropdown);
   };
   const searchRecipe = () => {
@@ -65,9 +69,6 @@ const App = () => {
   return (
     <>
       <div>
-        <div>
-          {selectItem ? `You selected ${selectItem}` : `Select a country`}
-        </div>
         <button
           onClick={(): void => toggleDropdown()}
           onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
@@ -91,8 +92,11 @@ const App = () => {
         />
         <button onClick={searchRecipe}>Search</button>
       </div>
-
-      <RecipeList mealsList={mealData} />
+      {filteredData && filteredData.length > 0 ? (
+        <RecipeList mealsList={filteredData} />
+      ) : (
+        <RecipeList mealsList={mealData} />
+      )}
     </>
   );
 };

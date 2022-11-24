@@ -1,4 +1,8 @@
 export interface IMealApiResponse {
+  length: number;
+  // [x: string]: number;
+  filter: any;
+  // filter(arg0: (meal: any) => boolean): [IMealApiResponse | undefined, import("react").Dispatch<import("react").SetStateAction<IMealApiResponse | undefined>>];
   strArea: string;
   strCategory: string;
   strInstructions?: string;
