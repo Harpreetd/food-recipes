@@ -1,6 +1,6 @@
 export interface IMealApiResponse {
-  strArea?: string;
-  strCategory?: string;
+  strArea: string;
+  strCategory: string;
   strInstructions?: string;
   strMeal?: string;
   strMealThumb?: string;

@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React from "react";
 import { useState, useEffect } from "react";
 import RecipeList from "./Components/RecipeList/RecipeList";
 import { useFetch } from "./Hooks/useFetch";
 import { IMealApiResponse } from "./Interface/Interface";
-import Dropdown from "./Components/FilterButtons/FilterButton";
+import Dropdown from "./Components/FilterButtons/Dropdown";
+
 import "./App.css";
 
 const App = () => {
@@ -13,15 +15,26 @@ const App = () => {
   const [mealData, setMealData] = useState<IMealApiResponse>();
   const [search, setSearch] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const [selectCountry, setSelectCountry] = useState<string>("");
+  const [selectItem, setSelectItem] = useState<string>("");
 
   const hookData = useFetch(url);
 
   useEffect(() => {
     setMealData(hookData.apiData);
   }, [hookData, url]);
-  const countries = () => {
-    return ["indian", "canadian", "turkish"];
+  const countries = (): string[] => {
+    const countryNames: string[] = [];
+    if (mealData !== undefined) {
+      Array.isArray(mealData)
+        ? mealData.map((meal, index) => {
+            countryNames.push(meal.strArea);
+            return countryNames;
+          })
+        : "No Data Available";
+    } else {
+      console.log("no country");
+    }
+    return countryNames;
   };
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -32,23 +45,18 @@ const App = () => {
     }
   };
   const countrySelection = (country: string): void => {
-    setSelectCountry(country);
+    setSelectItem(country);
     setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`);
   };
   const searchRecipe = () => {
     setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
   };
-  // const searchByCountry = (countryName: string) => {
-  //   setUrl(
-  //     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${countryName}`
-  //   );
-  //   console.log("Country button clicked", hookData.apiData);
-  // };
+
   return (
     <>
       <div>
         <div>
-          {selectCountry ? `You selected ${selectCountry}` : `Select a country`}
+          {selectItem ? `You selected ${selectItem}` : `Select a country`}
         </div>
         <button
           onClick={(): void => toggleDropdown()}
@@ -56,13 +64,13 @@ const App = () => {
             dismissHandler(e)
           }
         >
-          <div>{selectCountry ? "Select: " + selectCountry : "Select..."}</div>
+          <div>{selectItem ? "Select: " + selectItem : "Select..."}</div>
           {showDropdown && (
             <Dropdown
-              countries={countries()}
+              collection={countries()}
               showDropdown={false}
               toggleDropdown={(): void => toggleDropdown()}
-              countrySelection={countrySelection}
+              itemSelection={countrySelection}
             />
           )}
         </button>
@@ -73,9 +81,7 @@ const App = () => {
         />
         <button onClick={searchRecipe}>Search</button>
       </div>
-      <div>
-        {/* <button onClick={() => searchByCountry("indian")}>Cusine</button> */}
-      </div>
+
       <RecipeList mealsList={mealData} />
     </>
   );
