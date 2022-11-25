@@ -3,12 +3,12 @@ import { AppContextConsumer } from "./Context/AppContext";
 
 export const PostInfo = () => (
   <AppContextConsumer>
-    {(appContext) =>
-      appContext && (
+    {(AppContext) =>
+      AppContext && (
         <div>
-          Name: {appContext.name} <br />
-          Author: {appContext.author} <br />
-          Url: {appContext.url}
+          Cusine {AppContext.strArea} <br />
+          category {AppContext.strCategory} <br />
+          Dish Name {AppContext.strMeal}
         </div>
       )
     }

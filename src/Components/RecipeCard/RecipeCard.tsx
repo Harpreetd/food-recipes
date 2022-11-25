@@ -1,18 +1,18 @@
 import React from "react";
-import { IRecipeCardProps } from "../../Interface/Interface";
-
-const RecipeCard = ({ value }: IRecipeCardProps) => {
-  return (
-    <div>
-      RecipeCard
-      {
+// import { IRecipeCardProps } from "../../Interface/Interface";
+import AppContext, { AppContextConsumer } from "../../Context/AppContext";
+const RecipeCard = () => {
+  <AppContextConsumer>
+    {(AppContext) =>
+      AppContext && (
         <div>
-          <img src={value.strMealThumb} alt="food" />
-          <h2>{value.strArea}</h2>
+          Cusine {AppContext.strArea} <br />
+          category {AppContext.strCategory} <br />
+          Dish Name {AppContext.strMeal}
         </div>
-      }
-    </div>
-  );
+      )
+    }
+  </AppContextConsumer>;
 };
 
 export default RecipeCard;
