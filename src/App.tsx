@@ -7,7 +7,7 @@ import { IMealApiResponse } from "./Interface/Interface";
 import Dropdown from "./Components/FilterButtons/Dropdown";
 
 import "./App.css";
-import { Interface } from "readline";
+import { PostInfo } from "./Sample";
 
 const App = () => {
   const [url, setUrl] = useState<string>(
@@ -24,7 +24,6 @@ const App = () => {
     if (selectItem == "") {
       setMealData(hookData.apiData);
     }
-    console.log("first useEffect", mealData);
   }, [hookData, url, selectItem]);
 
   const countries = (): string[] => {
@@ -106,6 +105,7 @@ const App = () => {
       ) : (
         <RecipeList mealsList={mealData} />
       )}
+      <PostInfo />
     </>
   );
 };
