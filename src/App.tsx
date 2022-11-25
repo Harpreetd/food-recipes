@@ -7,6 +7,7 @@ import { IMealApiResponse } from "./Interface/Interface";
 import Dropdown from "./Components/FilterButtons/Dropdown";
 
 import "./App.css";
+import { Interface } from "readline";
 
 const App = () => {
   const [url, setUrl] = useState<string>(
@@ -20,12 +21,12 @@ const App = () => {
   const hookData = useFetch(url);
 
   useEffect(() => {
-    setMealData(hookData.apiData);
+    if (selectItem == "") {
+      setMealData(hookData.apiData);
+    }
     console.log("first useEffect", mealData);
-  }, [hookData]);
-  useEffect(() => {
-    console.log("second useEffect", mealData);
-  }, [mealData]);
+  }, [hookData, url, selectItem]);
+
   const countries = (): string[] => {
     const countryNames: string[] = [];
     if (mealData !== undefined) {
@@ -62,7 +63,15 @@ const App = () => {
     console.log("meal data inside country fucntion", mealData);
     setShowDropdown(!showDropdown);
   };
-  const searchRecipe = () => {
+  // const searchRecipe = () => {
+  //   setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+  //   setSelectItem("");
+  // };
+
+  const handleSearch = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSearch(e.target.value);
     setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
   };
 
@@ -88,9 +97,9 @@ const App = () => {
         <input
           type="input"
           placeholder="search recipe name"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearch(e)}
         />
-        <button onClick={searchRecipe}>Search</button>
+        {/* <button onClick={searchRecipe}>Search</button> */}
       </div>
       {filteredData && filteredData.length > 0 ? (
         <RecipeList mealsList={filteredData} />

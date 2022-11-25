@@ -27,3 +27,11 @@ export interface IRecipeListProps {
 export interface IRecipeCardProps {
   value: IMealApiResponse;
 }
+
+export interface IDropdownProps {
+  collection?: string[];
+  showDropdown: boolean;
+  toggleDropdown: Function;
+  itemSelection: Function;
+  onChange?: Function;
+}

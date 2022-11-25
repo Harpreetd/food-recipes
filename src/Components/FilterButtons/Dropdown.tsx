@@ -1,12 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-export interface IDropdownProps {
-  collection?: string[];
-  showDropdown: boolean;
-  toggleDropdown: Function;
-  itemSelection: Function;
-  onChange?: Function;
-}
+import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
   collection,
