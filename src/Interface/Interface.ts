@@ -32,7 +32,11 @@ export interface IRecipeListProps {
 }
 
 export interface IRecipeCardProps {
-  value: IMealApiResponse;
+  id: string;
+  name: string;
+  category: string;
+  image: string;
+  area: string;
 }
 
 export interface IDropdownProps {

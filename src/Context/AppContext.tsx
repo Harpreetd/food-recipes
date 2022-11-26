@@ -20,11 +20,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         const newMeals = meals.map((item: IMeals) => {
           const { idMeal, strMeal, strMealThumb, strCategory, strArea } = item;
           return {
-            id: idMeal,
-            name: strMeal,
-            image: strMealThumb,
-            category: strCategory,
-            area: strArea,
+            idMeal,
+            strMeal,
+            strMealThumb,
+            strCategory,
+            strArea,
           };
         });
         setMeals(newMeals);

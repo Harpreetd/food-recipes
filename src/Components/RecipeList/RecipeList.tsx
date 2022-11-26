@@ -5,7 +5,7 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 import { useGlobalContext } from "../../Context/AppContext";
 // import { Interface } from "readline";
 
-const RecipeList = ({ mealsList }: IRecipeListProps) => {
+const RecipeList = () => {
   const { meals, loading } = useGlobalContext();
   if (loading) {
     return <h2>"laoding..."</h2>;
@@ -18,8 +18,8 @@ const RecipeList = ({ mealsList }: IRecipeListProps) => {
       <h2>RecipeList</h2>
       <div>
         {Array.isArray(meals)
-          ? meals.map((meal: IMeals) => {
-              return <RecipeCard key={meal.idMeal} {...meal} />;
+          ? meals.map((meal: IMeals, index: number) => {
+              return <RecipeCard key={index} {...meal} />;
             })
           : "No Data Available"}
       </div>
