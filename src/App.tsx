@@ -88,8 +88,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="meal/:id" element={<SingleMeal />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/meals/:id" element={<SingleMeal />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>

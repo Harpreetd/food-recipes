@@ -22,6 +22,7 @@ const RecipeCard = ({
           {idMeal}
           {strCategory}
         </p>
+        <Link to={`/meals/${idMeal}`}>Details</Link>
       </div>
     </article>
   );
