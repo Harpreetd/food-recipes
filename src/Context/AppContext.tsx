@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect, ReactNode } from "react";
 import { useCallback } from "react";
 import { IMealApiResponse, IMeals } from "../Interface/Interface";
-const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+// const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [url, setUrl] = useState<string>(
+    "https://www.themealdb.com/api/json/v1/1/search.php?s="
+  );
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchTerm, setSearchTerm] = useState<string>("a");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
 
   const fetchMeals = useCallback(async () => {
@@ -42,7 +45,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     fetchMeals();
   }, [searchTerm, fetchMeals]);
   return (
-    <AppContext.Provider value={{ loading, meals, setSearchTerm }}>
+    <AppContext.Provider value={{ loading, meals, setSearchTerm,setUrl }}>
       {children}
     </AppContext.Provider>
   );

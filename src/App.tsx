@@ -5,23 +5,15 @@ import Home from "./Pages/Home";
 import SingleMeal from "./Pages/SingleMeal";
 import Error from "./Pages/Error";
 import Navbar from "./Components/Navbar/Navbar";
-import { useState, useEffect } from "react";
-import RecipeList from "./Components/RecipeList/RecipeList";
+// import { useState, useEffect } from "react";
+// import RecipeList from "./Components/RecipeList/RecipeList";
 // import { useFetch } from "./Hooks/useFetch";
-import { IMealApiResponse } from "./Interface/Interface";
-import Dropdown from "./Components/FilterButtons/Dropdown";
+// import { IMealApiResponse } from "./Interface/Interface";
+// import Dropdown from "./Components/FilterButtons/Dropdown";
 
 import "./App.css";
-// import { PostInfo } from "./Sample";
-// import { AppContextProvider } from "./Context/AppContext";
 import About from "./Pages/About";
 
-// const sampleAppContext: IMealApiResponse = {
-//   length: 2,
-//   strArea: "Indian",
-//   strCategory: "vegeterian",
-//   strMeal: "Daal Makhni",
-// };
 const App = () => {
   // const [url, setUrl] = useState<string>(
   //   "https://www.themealdb.com/api/json/v1/1/search.php?s="

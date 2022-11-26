@@ -3,22 +3,22 @@ import { useState, useEffect } from "react";
 import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
-  collection,
-  itemSelection,
+  options,
+  optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const onClickHandler = (item: string): void => {
-    itemSelection(item);
+    if (optionSelection) optionSelection(item);
   };
   useEffect(() => {
     setShowDropdown(showDropdown);
-    console.log(collection); // undefined
+    console.log(options); // undefined
   }, [showDropdown]);
   return (
     <>
       <div>
-        {collection &&
-          collection.map((item: string, index: number): JSX.Element => {
+        {options &&
+          options.map((item: string, index: number): JSX.Element => {
             return (
               <p
                 key={index}
