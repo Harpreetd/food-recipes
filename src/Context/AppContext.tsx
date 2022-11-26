@@ -19,7 +19,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       if (meals) {
         const newMeals = meals.map((item: IMeals) => {
           const { idMeal, strMeal, strMealThumb, strCategory, strArea } = item;
-
           return {
             id: idMeal,
             name: strMeal,

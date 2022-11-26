@@ -7,7 +7,7 @@ import Error from "./Pages/Error";
 import Navbar from "./Components/Navbar/Navbar";
 import { useState, useEffect } from "react";
 import RecipeList from "./Components/RecipeList/RecipeList";
-import { useFetch } from "./Hooks/useFetch";
+// import { useFetch } from "./Hooks/useFetch";
 import { IMealApiResponse } from "./Interface/Interface";
 import Dropdown from "./Components/FilterButtons/Dropdown";
 
@@ -23,65 +23,65 @@ import About from "./Pages/About";
 //   strMeal: "Daal Makhni",
 // };
 const App = () => {
-  const [url, setUrl] = useState<string>(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s="
-  );
-  const [mealData, setMealData] = useState<IMealApiResponse>();
-  const [search, setSearch] = useState<string>("");
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const [selectItem, setSelectItem] = useState<string>("");
-  const [filteredData, setFilteredData] = useState<IMealApiResponse>();
-  const hookData = useFetch(url);
+  // const [url, setUrl] = useState<string>(
+  //   "https://www.themealdb.com/api/json/v1/1/search.php?s="
+  // );
+  // const [mealData, setMealData] = useState<IMealApiResponse>();
+  // const [search, setSearch] = useState<string>("");
+  // const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  // const [selectItem, setSelectItem] = useState<string>("");
+  // const [filteredData, setFilteredData] = useState<IMealApiResponse>();
+  // const hookData = useFetch(url);
 
-  useEffect(() => {
-    if (selectItem == "") {
-      setMealData(hookData.apiData);
-    }
-  }, [hookData, url, selectItem]);
+  // useEffect(() => {
+  //   if (selectItem == "") {
+  //     setMealData(hookData.apiData);
+  //   }
+  // }, [hookData, url, selectItem]);
 
-  const countries = (): string[] => {
-    const countryNames: string[] = [];
-    if (mealData !== undefined) {
-      Array.isArray(mealData)
-        ? mealData.map((meal, index) => {
-            countryNames.push(meal.strArea);
-            return countryNames;
-          })
-        : "No Data Available";
-    } else {
-      console.log("no country");
-    }
-    const uniqueCountryNames = [...new Set(countryNames)];
-    return uniqueCountryNames;
-  };
+  // const countries = (): string[] => {
+  //   const countryNames: string[] = [];
+  //   if (mealData !== undefined) {
+  //     Array.isArray(mealData)
+  //       ? mealData.map((meal, index) => {
+  //           countryNames.push(meal.strArea);
+  //           return countryNames;
+  //         })
+  //       : "No Data Available";
+  //   } else {
+  //     console.log("no country");
+  //   }
+  //   const uniqueCountryNames = [...new Set(countryNames)];
+  //   return uniqueCountryNames;
+  // };
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-  const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
-    if (event.currentTarget === event.target) {
-      setShowDropdown(false);
-    }
-  };
-  const countrySelection = (country: string): void => {
-    setSelectItem(country);
-    let filteredMeals =
-      mealData &&
-      mealData.filter((meal: { strArea: string }) => {
-        return meal.strArea === country;
-      });
-    setFilteredData(filteredMeals);
+  // const toggleDropdown = () => {
+  //   setShowDropdown(!showDropdown);
+  // };
+  // const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
+  //   if (event.currentTarget === event.target) {
+  //     setShowDropdown(false);
+  //   }
+  // };
+  // const countrySelection = (country: string): void => {
+  //   setSelectItem(country);
+  //   let filteredMeals =
+  //     mealData &&
+  //     mealData.filter((meal: { strArea: string }) => {
+  //       return meal.strArea === country;
+  //     });
+  //   setFilteredData(filteredMeals);
 
-    console.log("meal data inside country fucntion", mealData);
-    setShowDropdown(!showDropdown);
-  };
+  //   console.log("meal data inside country fucntion", mealData);
+  //   setShowDropdown(!showDropdown);
+  // };
 
-  const handleSearch = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSearch(e.target.value);
-    setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
-  };
+  // const handleSearch = (e: {
+  //   target: { value: React.SetStateAction<string> };
+  // }) => {
+  //   setSearch(e.target.value);
+  //   setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+  // };
 
   return (
     <Router>

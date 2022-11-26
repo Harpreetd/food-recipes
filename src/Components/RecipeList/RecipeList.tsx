@@ -1,5 +1,5 @@
 import React from "react";
-import { IRecipeListProps } from "../../Interface/Interface";
+import { IMeals, IRecipeListProps } from "../../Interface/Interface";
 // import { MealApiResponse } from "../../Interface/Interface";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import { useGlobalContext } from "../../Context/AppContext";
@@ -15,7 +15,14 @@ const RecipeList = ({ mealsList }: IRecipeListProps) => {
   }
   return (
     <div>
-      RecipeList
+      <h2>RecipeList</h2>
+      <div>
+        {Array.isArray(meals)
+          ? meals.map((meal: IMeals) => {
+              return <RecipeCard key={meal.idMeal} {...meal} />;
+            })
+          : "No Data Available"}
+      </div>
       {/* {Array.isArray(mealsList)
         ? mealsList.map((meal, index) => {
             return <RecipeCard key={index} value={meal} />;
