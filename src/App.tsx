@@ -12,16 +12,16 @@ import { IMealApiResponse } from "./Interface/Interface";
 import Dropdown from "./Components/FilterButtons/Dropdown";
 
 import "./App.css";
-import { PostInfo } from "./Sample";
-import { AppContextProvider } from "./Context/AppContext";
+// import { PostInfo } from "./Sample";
+// import { AppContextProvider } from "./Context/AppContext";
 import About from "./Pages/About";
 
-const sampleAppContext: IMealApiResponse = {
-  length: 2,
-  strArea: "Indian",
-  strCategory: "vegeterian",
-  strMeal: "Daal Makhni",
-};
+// const sampleAppContext: IMealApiResponse = {
+//   length: 2,
+//   strArea: "Indian",
+//   strCategory: "vegeterian",
+//   strMeal: "Daal Makhni",
+// };
 const App = () => {
   const [url, setUrl] = useState<string>(
     "https://www.themealdb.com/api/json/v1/1/search.php?s="

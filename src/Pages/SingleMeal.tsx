@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { FC } from "react";
 
-const SingleMeal = () => {
-  return (
-    <div>SingleMeal</div>
-  )
-}
+const SingleMeal: FC = () => {
+  return <div>SingleMeal</div>;
+};
 
-export default SingleMeal
+export default SingleMeal;
