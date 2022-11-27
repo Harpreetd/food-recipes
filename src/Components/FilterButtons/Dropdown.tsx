@@ -4,28 +4,33 @@ import { useGlobalContext } from "../../Context/AppContext";
 import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
-  optionArea,
+  options,
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const onClickHandler = (item: any): void => {
-    if (optionSelection) optionSelection(item);
-  };
+  console.log(options);
+  const optionKey = options && Object.keys(options[0]);
+  console.log(optionKey);
+
   useEffect(() => {
     setShowDropdown(showDropdown);
+    return console.log(optionKey);
   }, [showDropdown]);
+  const onClickHandler = (selectedOption: any): void => {
+    if (optionSelection) optionSelection(selectedOption);
+  };
   return (
     <>
-      {Array.isArray(optionArea)
-        ? optionArea.map((item, index) => {
+      {Array.isArray(options)
+        ? options.map((item, index) => {
             return (
               <p
                 key={index}
                 onClick={(): void => {
-                  onClickHandler(item.strArea);
+                  onClickHandler(item.strCategory);
                 }}
               >
-                {item.strArea}
+                {item.strCategory}
               </p>
             );
           })
