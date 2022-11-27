@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect, ReactNode } from "react";
 import { useCallback } from "react";
-import { forEachChild } from "typescript";
-import RecipeCard from "../Components/RecipeCard/RecipeCard";
-import Test from "../Components/TestComponent/Test";
+
 import {
   ICategory,
   ICountry,
@@ -12,11 +10,9 @@ import {
 } from "../Interface/Interface";
 
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
-
+const initialUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [url, setUrl] = useState<string>(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s="
-  );
+  const [url, setUrl] = useState<string>(initialUrl);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
@@ -27,6 +23,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
+      console.log("inside fetch function", url, searchTerm);
       const data = await response.json();
       const { meals } = data;
       if (meals) {
@@ -53,7 +50,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     fetchMeals();
-  }, [searchTerm]);
+    return setUrl(initialUrl);
+  }, [searchTerm, url]);
   // fetching from multiple endpoints
   useEffect(() => {
     getAll();
