@@ -34,7 +34,7 @@ export interface IMealApiResponse {
   //
   loading: boolean;
   filter?: any;
-  // searchTerm: string;
+  searchTerm: string;
   setSearchTerm: Function;
   meals: IMeals[];
   country: ICountry[];

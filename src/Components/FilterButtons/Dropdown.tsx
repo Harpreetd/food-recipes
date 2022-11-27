@@ -1,3 +1,4 @@
+import { FormControl, MenuItem, Select } from "@mui/material";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
@@ -8,7 +9,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   // const [showDropdown, setShowDropdown] = useState<boolean>(false);
-
+  const { searchTerm, setSearchTerm } = useGlobalContext();
   // useEffect(() => {
   //   setShowDropdown(showDropdown);
   // }, [showDropdown]);
@@ -17,20 +18,40 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
   return (
     <>
-      {Array.isArray(options)
+      {/* {Array.isArray(options)
         ? options.map((item, index) => {
-            return (
-              <p
-                key={index}
-                onClick={(): void => {
-                  onClickHandler(item);
-                }}
-              >
-                {item}
-              </p>
-            );
-          })
-        : "Not Found"}
+            return ( */}
+
+      <Select
+        // defaultValue=""
+        value={searchTerm}
+        labelId="custom-select-label"
+        id="custom-select"
+        onChange={() => {}}
+      >
+        {Array.isArray(options)
+          ? options.map((item, index) => {
+              console.log(item);
+              return (
+                <MenuItem key={index} value={item}>
+                  {item}
+                </MenuItem>
+              );
+            })
+          : "No data available"}
+      </Select>
+      {/* <p
+                  key={index}
+                  onClick={(): void => {
+                    onClickHandler(item);
+                  }}
+                >
+                  {item}
+                </p> */}
+
+      {/* ); */}
+      {/* }) */}
+      {/* : "Not Found"} */}
     </>
   );
 };

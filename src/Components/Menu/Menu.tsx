@@ -1,4 +1,5 @@
 import { MedicalServices } from "@mui/icons-material";
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../FilterButtons/Dropdown";
@@ -21,11 +22,11 @@ const Menu: React.FC = (): JSX.Element => {
     setShowDropdown(!showDropdown);
   };
   // hide the dropdown menu if clicked outside of dropdown-menu
-  // const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>) => {
-  //   if (event.currentTarget === event.target) {
-  //     setShowDropdown(false);
-  //   }
-  // };
+  const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>) => {
+    if (event.currentTarget === event.target) {
+      setShowDropdown(false);
+    }
+  };
 
   // callback function to consume the country name from the child component
   const countrySelection = (option: string): void => {
@@ -46,11 +47,18 @@ const Menu: React.FC = (): JSX.Element => {
       <div>
         {selectOption ? `You selected ${selectOption}` : "Select an option..."}
       </div>
-      <button
+      <Dropdown
+        id="countryDropdown"
+        options={countryList}
+        showDropdown={false}
+        toggleDropdown={(): void => toggleDropdown()}
+        optionSelection={countrySelection}
+      />
+      <Button
         onClick={(): void => toggleDropdown()}
-        // onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-        //   dismissHandler(e);
-        // }}
+        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
+          dismissHandler(e);
+        }}
       >
         <div>
           {selectOption ? "Country Selected" + selectOption : "select country"}
@@ -66,12 +74,12 @@ const Menu: React.FC = (): JSX.Element => {
             />
           </>
         )}
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={(): void => toggleDropdown()}
-        // onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-        //   dismissHandler(e);
-        // }}
+        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
+          dismissHandler(e);
+        }}
       >
         <div>
           {selectOption
@@ -89,12 +97,12 @@ const Menu: React.FC = (): JSX.Element => {
             />
           </>
         )}
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={(): void => toggleDropdown()}
-        // onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-        //   dismissHandler(e);
-        // }}
+        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
+          dismissHandler(e);
+        }}
       >
         <div>
           {selectOption
@@ -112,7 +120,7 @@ const Menu: React.FC = (): JSX.Element => {
             />
           </>
         )}
-      </button>
+      </Button>
     </>
   );
 };

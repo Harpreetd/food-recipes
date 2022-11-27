@@ -78,6 +78,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       value={{
         loading,
         meals,
+        searchTerm,
         setSearchTerm,
         country,
         category,
