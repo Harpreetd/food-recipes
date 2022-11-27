@@ -7,15 +7,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
   options,
   optionSelection,
 }: IDropdownProps): JSX.Element => {
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  console.log(options);
-  const optionKey = options && Object.keys(options[0]);
-  console.log(optionKey);
+  // const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
-  useEffect(() => {
-    setShowDropdown(showDropdown);
-    return console.log(optionKey);
-  }, [showDropdown]);
+  // useEffect(() => {
+  //   setShowDropdown(showDropdown);
+  // }, [showDropdown]);
   const onClickHandler = (selectedOption: any): void => {
     if (optionSelection) optionSelection(selectedOption);
   };
@@ -27,10 +23,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
               <p
                 key={index}
                 onClick={(): void => {
-                  onClickHandler(item.strCategory);
+                  onClickHandler(item);
                 }}
               >
-                {item.strCategory}
+                {item}
               </p>
             );
           })

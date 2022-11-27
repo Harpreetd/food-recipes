@@ -23,12 +23,12 @@ export interface ICategory {
   strCategory?: string;
 }
 export interface IIngredient {
-  strIngredient1?: string;
+  strIngredient?: string;
 }
 
-export interface IDropdownOptions {
-  [key: string]: any;
-}
+// export interface IDropdownOptions {
+//   [key: string]: string;
+// }
 
 export interface IMealApiResponse {
   //
@@ -37,9 +37,9 @@ export interface IMealApiResponse {
   // searchTerm: string;
   setSearchTerm: Function;
   meals: IMeals[];
-  country?: IDropdownOptions[];
-  category: IDropdownOptions[];
-  ingredient: IDropdownOptions[];
+  country: ICountry[];
+  category: ICategory[];
+  ingredient: IIngredient[];
   setUrl: Function;
   children?: JSX.Element | JSX.Element[];
 }
@@ -57,9 +57,10 @@ export interface IRecipeCardProps {
 }
 
 export interface IDropdownProps {
-  options?: IDropdownOptions[];
+  options?: string[];
   showDropdown: boolean;
   toggleDropdown: Function;
   optionSelection: Function;
   onChange?: Function;
+  id: string;
 }

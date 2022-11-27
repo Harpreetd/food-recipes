@@ -14,7 +14,7 @@ const initialUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [url, setUrl] = useState<string>(initialUrl);
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("a");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
   const [country, setCountry] = useState<ICountry[] | []>([]);
   const [category, setCategory] = useState<ICategory[] | []>([]);
@@ -23,7 +23,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
-      console.log("inside fetch function", url, searchTerm);
       const data = await response.json();
       const { meals } = data;
       if (meals) {
