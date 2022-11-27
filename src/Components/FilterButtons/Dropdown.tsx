@@ -8,8 +8,8 @@ const Dropdown: React.FC<IDropdownProps> = ({
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
-  const onClickHandler = (index: number): void => {
-    if (optionSelection) optionSelection(index);
+  const onClickHandler = (item: any): void => {
+    if (optionSelection) optionSelection(item);
   };
   useEffect(() => {
     setShowDropdown(showDropdown);
@@ -17,25 +17,20 @@ const Dropdown: React.FC<IDropdownProps> = ({
   }, [showDropdown]);
   return (
     <>
-      <div>
-        <h2>Dropdown caountries</h2>
-        <div>
-          {Array.isArray(optionArea)
-            ? optionArea.map((item, index) => {
-                return (
-                  <p
-                    key={index}
-                    onClick={(): void => {
-                      onClickHandler(index);
-                    }}
-                  >
-                    {item.strArea}
-                  </p>
-                );
-              })
-            : "Not Found"}
-        </div>
-      </div>
+      {Array.isArray(optionArea)
+        ? optionArea.map((item, index) => {
+            return (
+              <p
+                key={index}
+                onClick={(): void => {
+                  onClickHandler(item.strArea);
+                }}
+              >
+                {item.strArea}
+              </p>
+            );
+          })
+        : "Not Found"}
     </>
   );
 };
