@@ -10,13 +10,13 @@ import {
   IMealApiResponse,
   IMeals,
 } from "../Interface/Interface";
-const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+// const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
-  // const [url, setUrl] = useState<string>(
-  //   "https://www.themealdb.com/api/json/v1/1/search.php?s="
-  // );
+  const [url, setUrl] = useState<string>(
+    "https://www.themealdb.com/api/json/v1/1/search.php?s="
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
@@ -27,9 +27,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
-      console.log("url in fetch", url);
+      console.log("response", response);
       const data = await response.json();
       console.log(data.meals);
+      console.log("url + response", url, data);
       const { meals } = data;
       if (meals) {
         const newMeals = meals.map((item: IMeals) => {
@@ -49,7 +50,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       }
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoading(false);
     }
   }, [searchTerm]);
@@ -86,7 +87,15 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider
-      value={{ loading, meals, setSearchTerm, country, category, ingredient }}
+      value={{
+        loading,
+        meals,
+        setSearchTerm,
+        country,
+        category,
+        ingredient,
+        setUrl,
+      }}
     >
       {children}
     </AppContext.Provider>

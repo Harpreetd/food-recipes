@@ -6,7 +6,7 @@ import Dropdown from "../FilterButtons/Dropdown";
 const Menu: React.FC = (): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [selectOption, setSelectOption] = useState<string>("");
-  const { country } = useGlobalContext();
+  const { country, setUrl, setSearchTerm } = useGlobalContext();
 
   // toggle the dropdown
   const toggleDropdown = () => {
@@ -22,6 +22,9 @@ const Menu: React.FC = (): JSX.Element => {
   // callback function to consume the country name from the child component
   const optionSelection = (option: string): void => {
     setSelectOption(option);
+
+    if (setUrl) setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=`);
+    if (setSearchTerm) setSearchTerm(option);
   };
   return (
     <>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useGlobalContext } from "../../Context/AppContext";
 import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
@@ -7,9 +8,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-
+ 
   const onClickHandler = (item: any): void => {
     if (optionSelection) optionSelection(item);
+    
   };
   useEffect(() => {
     setShowDropdown(showDropdown);

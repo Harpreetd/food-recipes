@@ -35,6 +35,7 @@ export interface IMealApiResponse {
   country?: ICountry[];
   category: ICategory[];
   ingredient: IIngredient[];
+  setUrl: Function;
   children?: JSX.Element | JSX.Element[];
 }
 
