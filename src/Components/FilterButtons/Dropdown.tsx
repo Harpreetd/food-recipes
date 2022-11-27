@@ -7,29 +7,31 @@ const Dropdown: React.FC<IDropdownProps> = ({
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
   const onClickHandler = (item: string): void => {
     if (optionSelection) optionSelection(item);
   };
   useEffect(() => {
     setShowDropdown(showDropdown);
-    console.log(options); // undefined
+    console.log("dropdown options", options); // undefined
   }, [showDropdown]);
   return (
     <>
       <div>
-        {options &&
-          options.map((item: string, index: number): JSX.Element => {
-            return (
-              <p
-                key={index}
-                onClick={(): void => {
-                  onClickHandler(item);
-                }}
-              >
-                {item}
-              </p>
-            );
-          })}
+        {Array.isArray(options)
+          ? options.map((item: string, index: number): JSX.Element => {
+              return (
+                <p
+                  key={index}
+                  onClick={(): void => {
+                    onClickHandler(item);
+                  }}
+                >
+                  {item}
+                </p>
+              );
+            })
+          : "No countried Found"}
       </div>
     </>
   );

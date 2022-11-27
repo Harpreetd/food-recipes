@@ -23,9 +23,10 @@ export interface IMealApiResponse {
   filter?: any;
   // searchTerm: string;
   setSearchTerm: Function;
-  // setUrl: Function;
-  // url: string;
   meals: IMeals[];
+  country: { strArea: string }[];
+  category: string[];
+  ingredient: string[];
   children?: JSX.Element | JSX.Element[];
 }
 
@@ -42,7 +43,9 @@ export interface IRecipeCardProps {
 }
 
 export interface IDropdownProps {
-  options: string[];
+  options?: {
+    strArea: string;
+  }[];
   // options: Function;
   showDropdown: boolean;
   toggleDropdown: Function;

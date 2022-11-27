@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, ReactNode } from "react";
 import { useCallback } from "react";
+import { forEachChild } from "typescript";
 import RecipeCard from "../Components/RecipeCard/RecipeCard";
 import Test from "../Components/TestComponent/Test";
 import { IMealApiResponse, IMeals } from "../Interface/Interface";
@@ -13,7 +14,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
-  const [country, setCountry] = useState([]);
+  const [country, setCountry] = useState({});
   const [category, setCategory] = useState([]);
   const [ingredient, setIngredient] = useState([]);
   const fetchMeals = useCallback(async () => {
@@ -51,9 +52,16 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     fetchMeals();
   }, [searchTerm]);
   // fetching from multiple endpoints
-
   useEffect(() => {
-    Promise.all([
+    console.log("country useeffect", country);
+    console.log("Category useeffect", category);
+    console.log("ingredient useeffect", ingredient);
+  }, [country, category, ingredient]);
+  useEffect(() => {
+    getAll();
+  }, []);
+  const getAll: any = () => {
+    const allPromises = Promise.all([
       fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list").then(
         (res) => res.json()
       ),
@@ -63,40 +71,24 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list").then(
         (res) => res.json()
       ),
-    ]).then(console.log);
-    // .then(([resCountry, resCategory, resIngredient]) => {
-    //   return (
-    //     <Test
-    //       resIngredient={resIngredient.json()}
-    //       resCountry={resCountry}
-    //       resCategory={resCategory}
-    //     />
-    //   );
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-  }, []);
+    ]).then((values) => {
+      setCountry(values[0].meals);
+      setCategory(values[1]);
+      setIngredient(values[2]);
+    });
+  };
 
   return (
-    <AppContext.Provider value={{ loading, meals, setSearchTerm }}>
+    <AppContext.Provider
+      value={{ loading, meals, setSearchTerm, country, category, ingredient }}
+    >
       {children}
     </AppContext.Provider>
   );
 };
-// make sure use
+
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
 
 export { AppContext, AppProvider };
-
-// previous code
-// import { createContext, useState, useEffect } from "react";
-// import { IMealApiResponse } from "../Interface/Interface";
-// const AppContext = createContext<IMealApiResponse | null>(null);
-
-// export const AppContextProvider = AppContext.Provider;
-// export const AppContextConsumer = AppContext.Consumer;
-
-// export default AppContext;

@@ -6,23 +6,7 @@ import Dropdown from "../FilterButtons/Dropdown";
 const Menu: React.FC = (): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [selectOption, setSelectOption] = useState<string>("");
-  const { meals } = useGlobalContext();
-  //   useEffect(() => {
-  //     if (setUrl)
-  //       setUrl("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
-  //     console.log("new Url", url);
-  //   }, [showDropdown, setUrl]);
-
-  const countries = (): string[] => {
-    const countryNames: string[] = [];
-    if (meals !== undefined) {
-      meals.map((meal, index) => {
-        countryNames.push(meal.strArea);
-        return countryNames;
-      });
-    }
-    return countryNames;
-  };
+  const { country } = useGlobalContext();
 
   // toggle the dropdown
   const toggleDropdown = () => {
@@ -53,7 +37,7 @@ const Menu: React.FC = (): JSX.Element => {
         <div>{selectOption ? "Select:" + selectOption : "select..."}</div>
         {showDropdown && (
           <Dropdown
-            options={countries()}
+            options={country}
             showDropdown={false}
             toggleDropdown={(): void => toggleDropdown()}
             optionSelection={optionSelection}
