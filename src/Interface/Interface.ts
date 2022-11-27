@@ -23,7 +23,8 @@ export interface IMealApiResponse {
   filter?: any;
   // searchTerm: string;
   setSearchTerm: Function;
-  setUrl: Function;
+  // setUrl: Function;
+  // url: string;
   meals: IMeals[];
   children?: JSX.Element | JSX.Element[];
 }

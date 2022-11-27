@@ -6,11 +6,12 @@ import Dropdown from "../FilterButtons/Dropdown";
 const Menu: React.FC = (): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [selectOption, setSelectOption] = useState<string>("");
-  const { setUrl, meals } = useGlobalContext();
-  useEffect(() => {
-    if (setUrl) setUrl("www.themealdb.com/api/json/v1/1/list.php?a=list");
-    console.log(meals);
-  }, [showDropdown]);
+  const { meals } = useGlobalContext();
+  //   useEffect(() => {
+  //     if (setUrl)
+  //       setUrl("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
+  //     console.log("new Url", url);
+  //   }, [showDropdown, setUrl]);
 
   const countries = (): string[] => {
     const countryNames: string[] = [];
@@ -23,9 +24,6 @@ const Menu: React.FC = (): JSX.Element => {
     return countryNames;
   };
 
-  //   const countries = () => {
-  //     if (setUrl) setUrl("www.themealdb.com/api/json/v1/1/list.php?a=list");
-  //   };
   // toggle the dropdown
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
