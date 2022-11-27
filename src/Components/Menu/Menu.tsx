@@ -37,7 +37,7 @@ const Menu: React.FC = (): JSX.Element => {
         <div>{selectOption ? "Select:" + selectOption : "select..."}</div>
         {showDropdown && (
           <Dropdown
-            options={country}
+            optionArea={country}
             showDropdown={false}
             toggleDropdown={(): void => toggleDropdown()}
             optionSelection={optionSelection}

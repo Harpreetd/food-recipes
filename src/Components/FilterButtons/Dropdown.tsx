@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
-  options,
+  optionArea,
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -13,16 +13,24 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
   useEffect(() => {
     setShowDropdown(showDropdown);
-    console.log("dropdown options", options); // undefined
+    console.log("dropdown options", optionArea); // undefined
   }, [showDropdown]);
   return (
     <>
       <div>
-        {Array.isArray(options)
-          ? options.map((item: string, index: number): JSX.Element => {
+        <h2>Dropdown caountries</h2>
+        <div>
+          {Array.isArray(optionArea)
+            ? optionArea.map((item, index) => {
+                return <div key={index}>{item.strArea}</div>;
+              })
+            : "Not Found"}
+        </div>
+        {/* {Array.isArray(options)
+          ? options.map((item: string): JSX.Element => {
               return (
                 <p
-                  key={index}
+                  key={item}
                   onClick={(): void => {
                     onClickHandler(item);
                   }}
@@ -31,7 +39,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
                 </p>
               );
             })
-          : "No countried Found"}
+          : "No countried Found"} */}
       </div>
     </>
   );

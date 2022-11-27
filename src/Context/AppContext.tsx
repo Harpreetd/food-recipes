@@ -3,7 +3,13 @@ import { useCallback } from "react";
 import { forEachChild } from "typescript";
 import RecipeCard from "../Components/RecipeCard/RecipeCard";
 import Test from "../Components/TestComponent/Test";
-import { IMealApiResponse, IMeals } from "../Interface/Interface";
+import {
+  ICategory,
+  ICountry,
+  IIngredient,
+  IMealApiResponse,
+  IMeals,
+} from "../Interface/Interface";
 const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
 
@@ -14,9 +20,9 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
-  const [country, setCountry] = useState({});
-  const [category, setCategory] = useState([]);
-  const [ingredient, setIngredient] = useState([]);
+  const [country, setCountry] = useState<ICountry[] | []>([]);
+  const [category, setCategory] = useState<ICategory[] | []>([]);
+  const [ingredient, setIngredient] = useState<IIngredient[] | []>([]);
   const fetchMeals = useCallback(async () => {
     setLoading(true);
     try {
@@ -73,8 +79,8 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       ),
     ]).then((values) => {
       setCountry(values[0].meals);
-      setCategory(values[1]);
-      setIngredient(values[2]);
+      setCategory(values[1].meals);
+      setIngredient(values[2].meals);
     });
   };
 
