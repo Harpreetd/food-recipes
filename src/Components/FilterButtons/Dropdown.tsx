@@ -8,14 +8,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
   optionSelection,
 }: IDropdownProps): JSX.Element => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
- 
   const onClickHandler = (item: any): void => {
     if (optionSelection) optionSelection(item);
-    
   };
   useEffect(() => {
     setShowDropdown(showDropdown);
-    console.log("dropdown options", optionArea); // undefined
   }, [showDropdown]);
   return (
     <>

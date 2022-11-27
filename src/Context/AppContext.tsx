@@ -10,7 +10,7 @@ import {
   IMealApiResponse,
   IMeals,
 } from "../Interface/Interface";
-// const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
@@ -27,15 +27,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
-      console.log("response", response);
       const data = await response.json();
-      console.log(data.meals);
-      console.log("url + response", url, data);
       const { meals } = data;
       if (meals) {
         const newMeals = meals.map((item: IMeals) => {
           const { idMeal, strMeal, strMealThumb, strCategory, strArea } = item;
-
           return {
             idMeal,
             strMeal,
@@ -50,7 +46,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       }
       setLoading(false);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       setLoading(false);
     }
   }, [searchTerm]);
@@ -59,11 +55,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     fetchMeals();
   }, [searchTerm]);
   // fetching from multiple endpoints
-  useEffect(() => {
-    console.log("country useeffect", country);
-    console.log("Category useeffect", category);
-    console.log("ingredient useeffect", ingredient);
-  }, [country, category, ingredient]);
   useEffect(() => {
     getAll();
   }, []);
