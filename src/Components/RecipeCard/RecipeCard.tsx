@@ -1,42 +1,105 @@
 import React from "react";
+import {
+  Avatar,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Collapse,
+  IconButton,
+  styled,
+  Typography,
+} from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { red } from "@mui/material/colors";
+import { IconButtonProps } from "@mui/material/IconButton";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Link } from "react-router-dom";
-import { IMeals, IRecipeCardProps } from "../../Interface/Interface";
-// import { IRecipeCardProps } from "../../Interface/Interface";
-// import AppContext, { AppContextConsumer } from "../../Context/AppContext";
+import { IMeals } from "../../Interface/Interface";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
 const RecipeCard = ({
   idMeal,
   strMeal,
   strCategory,
   strMealThumb,
   strArea,
+  strInstructions,
 }: IMeals) => {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <article>
-      <div>
-        <img src={strMealThumb} alt={strMeal} />
-      </div>
-      <div>
-        <h3>{strMeal}</h3>
-        <h4>{strArea}</h4>
-        <p>
-          {idMeal}
-          {strCategory}
-        </p>
-        <Link to={`/meals/${idMeal}`}>Details</Link>
-      </div>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              <RestaurantIcon />
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={strMeal}
+          subheader={strCategory}
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={strMealThumb}
+          alt={strMeal}
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {strArea}
+            <Link to={`/meals/${idMeal}`}>Details</Link>
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>{strInstructions}</Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
     </article>
   );
-  // <AppContextConsumer>
-  //   {(AppContext) =>
-  //     AppContext && (
-  //       <div>
-  //         Cusine {AppContext.strArea} <br />
-  //         category {AppContext.strCategory} <br />
-  //         Dish Name {AppContext.strMeal}
-  //       </div>
-  //     )
-  //   }
-  // </AppContextConsumer>;
 };
 
 export default RecipeCard;

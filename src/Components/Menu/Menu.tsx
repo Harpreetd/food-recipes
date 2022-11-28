@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../FilterButtons/Dropdown";
@@ -35,7 +36,7 @@ const Menu: React.FC = (): JSX.Element => {
     if (setSearchTerm) setSearchTerm(option);
   };
   return (
-    <>
+    <Grid container spacing={3}>
       <Dropdown
         dropdownName="Cuisine"
         options={countryList}
@@ -56,7 +57,7 @@ const Menu: React.FC = (): JSX.Element => {
         showDropdown={false}
         optionSelection={ingredientSelection}
       />
-    </>
+    </Grid>
   );
 };
 

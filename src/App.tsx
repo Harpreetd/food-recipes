@@ -8,18 +8,23 @@ import Navbar from "./Components/Navbar/Navbar";
 
 import "./App.css";
 import About from "./Pages/About";
+import { Container, Stack } from "@mui/material";
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/meals/:id" element={<SingleMeal />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </Router>
+    <Container maxWidth="xl">
+      {/* <Stack spacing={2}> */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/meals/:id" element={<SingleMeal />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Router>
+      {/* </Stack> */}
+    </Container>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Grid, Stack } from "@mui/material";
 import React, { FC, useEffect } from "react";
 import Menu from "../Components/Menu/Menu";
 import RecipeList from "../Components/RecipeList/RecipeList";
@@ -10,11 +11,11 @@ const Home: FC = () => {
     return;
   }, []);
   return (
-    <main>
+    <Stack spacing={2}>
       <Searchbar />
       <Menu />
       <RecipeList />
-    </main>
+    </Stack>
   );
 };
 
