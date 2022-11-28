@@ -3,18 +3,18 @@ import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../FilterButtons/Dropdown";
 
 const Menu: React.FC = (): JSX.Element => {
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  // const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [selectOption, setSelectOption] = useState<string>("");
   const { country, category, ingredient, setUrl, setSearchTerm } =
     useGlobalContext();
   const countryList: any = country && country.map((item) => item.strArea);
-  console.log(countryList);
+  // console.log(countryList);
   const categoryList: any =
     category && category.map((item) => item.strCategory);
-  console.log(categoryList);
+  // console.log(categoryList);
   const ingredientList: any =
     ingredient && ingredient.map((item) => item.strIngredient);
-  console.log(ingredientList);
+  // console.log(ingredientList);
   // toggle the dropdown
   // const toggleDropdown = () => {
   //   setShowDropdown(!showDropdown);

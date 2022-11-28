@@ -50,8 +50,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     fetchMeals();
+    console.log("url after fetchmeal", url);
     return setUrl(initialUrl);
-  }, [searchTerm, url]);
+  }, [searchTerm]);
+
   // fetching from multiple endpoints
   useEffect(() => {
     getAll();
@@ -84,6 +86,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         country,
         category,
         ingredient,
+        url,
         setUrl,
       }}
     >

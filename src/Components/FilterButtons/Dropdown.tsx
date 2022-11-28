@@ -31,7 +31,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
         >
           {Array.isArray(options)
             ? options.map((item, index) => {
-                console.log(item);
+                // console.log(item);
                 return (
                   <MenuItem key={index} value={item}>
                     {item}

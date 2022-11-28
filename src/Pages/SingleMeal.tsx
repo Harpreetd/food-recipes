@@ -8,13 +8,14 @@ const SingleMeal: FC = () => {
   const { url, setUrl, searchTerm, setSearchTerm, meals } = useGlobalContext();
 
   const { id } = useParams<string>();
+  console.log("single meal", url);
   useEffect(() => {
     if (setUrl) setUrl(`${newUrl}`);
     if (setSearchTerm) setSearchTerm(`${id}`);
-    return console.log(`${newUrl}${id}`);
-  }, [url,searchTerm]);
+    // return;
+  }, []);
 
-  console.log(meals);
+  // console.log(meals);
 
   return (
     <div>
