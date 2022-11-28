@@ -1,6 +1,4 @@
-import { MedicalServices } from "@mui/icons-material";
-import { Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../FilterButtons/Dropdown";
 
@@ -18,15 +16,9 @@ const Menu: React.FC = (): JSX.Element => {
     ingredient && ingredient.map((item) => item.strIngredient);
   console.log(ingredientList);
   // toggle the dropdown
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-  // hide the dropdown menu if clicked outside of dropdown-menu
-  const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>) => {
-    if (event.currentTarget === event.target) {
-      setShowDropdown(false);
-    }
-  };
+  // const toggleDropdown = () => {
+  //   setShowDropdown(!showDropdown);
+  // };
 
   // callback function to consume the country name from the child component
   const countrySelection = (option: string): void => {
@@ -44,83 +36,26 @@ const Menu: React.FC = (): JSX.Element => {
   };
   return (
     <>
-      <div>
-        {selectOption ? `You selected ${selectOption}` : "Select an option..."}
-      </div>
       <Dropdown
-        id="countryDropdown"
+        dropdownName="Cuisine"
         options={countryList}
         showDropdown={false}
-        toggleDropdown={(): void => toggleDropdown()}
         optionSelection={countrySelection}
       />
-      <Button
-        onClick={(): void => toggleDropdown()}
-        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-          dismissHandler(e);
-        }}
-      >
-        <div>
-          {selectOption ? "Country Selected" + selectOption : "select country"}
-        </div>
-        {showDropdown && (
-          <>
-            <Dropdown
-              id="countryDropdown"
-              options={countryList}
-              showDropdown={false}
-              toggleDropdown={(): void => toggleDropdown()}
-              optionSelection={countrySelection}
-            />
-          </>
-        )}
-      </Button>
-      <Button
-        onClick={(): void => toggleDropdown()}
-        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-          dismissHandler(e);
-        }}
-      >
-        <div>
-          {selectOption
-            ? "Category Selected:" + selectOption
-            : "select category"}
-        </div>
-        {showDropdown && (
-          <>
-            <Dropdown
-              id="categoryDropdown"
-              options={categoryList}
-              showDropdown={false}
-              toggleDropdown={(): void => toggleDropdown()}
-              optionSelection={categorySelection}
-            />
-          </>
-        )}
-      </Button>
-      <Button
-        onClick={(): void => toggleDropdown()}
-        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void => {
-          dismissHandler(e);
-        }}
-      >
-        <div>
-          {selectOption
-            ? "Ingredient Selected" + selectOption
-            : "select Ingredient"}
-        </div>
-        {showDropdown && (
-          <>
-            <Dropdown
-              id="ingredientDropdown"
-              options={ingredientList}
-              showDropdown={false}
-              toggleDropdown={(): void => toggleDropdown()}
-              optionSelection={ingredientSelection}
-            />
-          </>
-        )}
-      </Button>
+
+      <Dropdown
+        dropdownName="Category"
+        options={categoryList}
+        showDropdown={false}
+        optionSelection={categorySelection}
+      />
+
+      <Dropdown
+        dropdownName="Ingredient"
+        options={ingredientList}
+        showDropdown={false}
+        optionSelection={ingredientSelection}
+      />
     </>
   );
 };

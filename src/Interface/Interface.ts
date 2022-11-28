@@ -59,8 +59,6 @@ export interface IRecipeCardProps {
 export interface IDropdownProps {
   options?: string[];
   showDropdown: boolean;
-  toggleDropdown: Function;
   optionSelection: Function;
-  onChange?: Function;
-  id: string;
+  dropdownName: string;
 }
