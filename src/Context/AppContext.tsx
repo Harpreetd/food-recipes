@@ -23,6 +23,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
+      console.log("url updated", url, searchTerm);
       const data = await response.json();
       const { meals } = data;
       if (meals) {

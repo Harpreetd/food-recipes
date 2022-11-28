@@ -15,15 +15,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   optionSelection,
   dropdownName,
 }: IDropdownProps): JSX.Element => {
-  // const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const { searchTerm, setSearchTerm } = useGlobalContext();
-  // useEffect(() => {
-  //   setShowDropdown(showDropdown);
-  // }, [showDropdown]);
-  const onChangeHandler = (
-    event: SelectChangeEvent<string>,
-    child: React.ReactNode
-  ): void => {
+  const onChangeHandler = (event: SelectChangeEvent<string>): void => {
     if (optionSelection) optionSelection(event.target.value);
   };
   return (

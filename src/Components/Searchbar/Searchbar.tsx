@@ -1,31 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { FormControl, Input, InputLabel } from "@mui/material";
+
 import { useGlobalContext } from "../../Context/AppContext";
 const Searchbar = () => {
-  const { setSearchTerm } = useGlobalContext();
+  const { setSearchTerm, meals } = useGlobalContext();
   const searchValue = React.useRef<HTMLInputElement>(null);
-  // console.log(setSearchTerm);
-  useEffect(() => {
-    searchValue.current?.focus();
-  }, []);
-  const searchMeal = () => {
-    if (setSearchTerm) setSearchTerm(searchValue.current?.value);
+  const searchMeal = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (setSearchTerm) setSearchTerm(event.target.value);
   };
   const handleSubmit = (e: Event) => {
     e.preventDefault();
   };
   return (
     <section>
-      <form onSubmit={() => handleSubmit}>
-        <div>
-          <label htmlFor="mealName">Search recipe name</label>
-          <input
-            type="text"
-            id="mealName"
-            ref={searchValue}
-            onChange={searchMeal}
-          />
-        </div>
-      </form>
+      <FormControl
+        variant="outlined"
+        sx={{ width: 400 }}
+        onSubmit={() => handleSubmit}
+      >
+        <InputLabel htmlFor="mealName">Search Recipe Name</InputLabel>
+        <Input
+          type="search"
+          id="mealName"
+          ref={searchValue}
+          onChange={searchMeal}
+        ></Input>
+      </FormControl>
     </section>
   );
 };
