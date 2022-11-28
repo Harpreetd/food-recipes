@@ -40,6 +40,7 @@ export interface IMealApiResponse {
   country: ICountry[];
   category: ICategory[];
   ingredient: IIngredient[];
+  url: string;
   setUrl: Function;
   children?: JSX.Element | JSX.Element[];
 }
