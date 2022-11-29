@@ -11,8 +11,7 @@ const Home: FC = () => {
     return;
   }, []);
   return (
-    <Stack spacing={2}>
-      <Searchbar />
+    <Stack spacing={10}>
       <Menu />
       <RecipeList />
     </Stack>

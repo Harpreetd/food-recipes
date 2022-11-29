@@ -36,27 +36,31 @@ const Menu: React.FC = (): JSX.Element => {
     if (setSearchTerm) setSearchTerm(option);
   };
   return (
-    <Grid container spacing={3}>
-      <Dropdown
-        dropdownName="Cuisine"
-        options={countryList}
-        showDropdown={false}
-        optionSelection={countrySelection}
-      />
-
-      <Dropdown
-        dropdownName="Category"
-        options={categoryList}
-        showDropdown={false}
-        optionSelection={categorySelection}
-      />
-
-      <Dropdown
-        dropdownName="Ingredient"
-        options={ingredientList}
-        showDropdown={false}
-        optionSelection={ingredientSelection}
-      />
+    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 26 }}>
+      <Grid item>
+        <Dropdown
+          dropdownName="Cuisine"
+          options={countryList}
+          showDropdown={false}
+          optionSelection={countrySelection}
+        />
+      </Grid>
+      <Grid item>
+        <Dropdown
+          dropdownName="Category"
+          options={categoryList}
+          showDropdown={false}
+          optionSelection={categorySelection}
+        />
+      </Grid>
+      <Grid item>
+        <Dropdown
+          dropdownName="Ingredient"
+          options={ingredientList}
+          showDropdown={false}
+          optionSelection={ingredientSelection}
+        />
+      </Grid>
     </Grid>
   );
 };
