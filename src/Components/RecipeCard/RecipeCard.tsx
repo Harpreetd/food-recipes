@@ -41,15 +41,16 @@ const RecipeCard = ({
   strMealThumb,
   strArea,
   strInstructions,
+
+  strIngredients,
 }: IMeals) => {
   const [expanded, setExpanded] = React.useState(false);
-
+  console.log(strIngredients);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    // <article>
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
@@ -74,6 +75,12 @@ const RecipeCard = ({
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {strArea}
+          {Array.isArray(strIngredients)
+            ? strIngredients.map((ingredient: string) => <li>{ingredient}</li>)
+            : "empty list"}
+          {strIngredients.forEach(function (ingredient: string) {
+            <li>{ingredient}</li>;
+          })}
           <Link to={`/meals/${idMeal}`}>Details</Link>
         </Typography>
       </CardContent>
@@ -98,7 +105,6 @@ const RecipeCard = ({
         </CardContent>
       </Collapse>
     </Card>
-    // </article>
   );
 };
 

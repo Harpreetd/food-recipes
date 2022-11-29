@@ -27,7 +27,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       const data = await response.json();
       const { meals } = data;
       if (meals) {
-        const newMeals = meals.map((item: IMeals) => {
+        const newMeals = meals.map((item: any) => {
           const {
             idMeal,
             strMeal,
@@ -44,6 +44,14 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             strIngredient5,
             strIngredient6,
             strIngredient7,
+            strIngredient8,
+            strIngredient9,
+            strIngredient10,
+            strIngredient11,
+            strIngredient12,
+            strIngredient13,
+            strIngredient14,
+            strIngredient15,
           } = item;
           return {
             idMeal,
@@ -54,13 +62,24 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             strInstructions,
             strTags,
             strYoutube,
-            strIngredient1,
-            strIngredient2,
-            strIngredient3,
-            strIngredient4,
-            strIngredient5,
-            strIngredient6,
-            strIngredient7,
+
+            strIngredients: [
+              strIngredient1,
+              strIngredient2,
+              strIngredient3,
+              strIngredient4,
+              strIngredient5,
+              strIngredient6,
+              strIngredient7,
+              strIngredient8,
+              strIngredient9,
+              strIngredient10,
+              strIngredient11,
+              strIngredient12,
+              strIngredient13,
+              strIngredient14,
+              strIngredient15,
+            ],
           };
         });
         setMeals(newMeals);

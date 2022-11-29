@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import IngredientList from "../Components/IngredientList/IngredientList";
 import RecipeCard from "../Components/RecipeCard/RecipeCard";
 import { useGlobalContext } from "../Context/AppContext";
 import { IMeals } from "../Interface/Interface";
@@ -11,7 +12,7 @@ const SingleMeal: FC = () => {
   useEffect(() => {
     getSingleMeal();
     return;
-  },[]);
+  }, []);
   const getSingleMeal = () => {
     if (setUrl) setUrl(`${newUrl}`);
     if (setSearchTerm) setSearchTerm(`${id}`);
@@ -32,6 +33,35 @@ const SingleMeal: FC = () => {
                 <h3>{meal.strMeal}</h3>
                 <h3>{meal.strArea}</h3>
                 <p>{meal.strInstructions}</p>
+                <IngredientList
+                  strIngredients={{
+                    strIngredient1: undefined,
+                    strIngredient2: undefined,
+                    strIngredient3: undefined,
+                    strIngredient4: undefined,
+                    strIngredient5: undefined,
+                    strIngredient6: undefined,
+                    strIngredient7: undefined,
+                    strIngredient8: undefined,
+                    strIngredient9: undefined,
+                    strIngredient10: undefined,
+                    strIngredient11: undefined,
+                    strIngredient12: undefined,
+                    strIngredient13: undefined,
+                    strIngredient14: undefined,
+                    strIngredient15: undefined,
+                    strIngredient16: undefined,
+                  }}
+                  idMeal={""}
+                  strArea={""}
+                  strCategory={""}
+                  strInstructions={""}
+                  strMeal={""}
+                  strMealThumb={""}
+                  strSource={""}
+                  strTags={""}
+                  strYoutube={""}
+                />
               </div>
             );
           })
