@@ -1,4 +1,4 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Container, Grid, Stack } from "@mui/material";
 import React, { FC, useEffect } from "react";
 import Menu from "../Components/Menu/Menu";
 import RecipeList from "../Components/RecipeList/RecipeList";
@@ -11,12 +11,17 @@ const Home: FC = () => {
     return;
   }, []);
   return (
-    <Box alignItems="center" justifyContent="center">
-      {/* <Stack spacing={10}> */}
+    <Container maxWidth="xl">
+      {/* <Grid rowSpacing={30}>
+        <Grid item> */}
       <Menu />
+      {/* </Grid>
+        <Grid item> */}
+
       <RecipeList />
-      {/* </Stack> */}
-    </Box>
+      {/* </Grid>
+      </Grid> */}
+    </Container>
   );
 };
 

@@ -16,7 +16,7 @@ const RecipeList = () => {
     return <h2>"no meals"</h2>;
   }
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ paddingTop: 10 }}>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
