@@ -13,17 +13,17 @@ import { Container, Stack } from "@mui/material";
 const App = () => {
   return (
     <Container maxWidth="xl">
-      {/* <Stack spacing={2}> */}
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/meals/:id" element={<SingleMeal />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Router>
-      {/* </Stack> */}
+      <Stack spacing={2}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/meals/:id" element={<SingleMeal />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </Router>
+      </Stack>
     </Container>
   );
 };

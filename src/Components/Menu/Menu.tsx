@@ -36,7 +36,7 @@ const Menu: React.FC = (): JSX.Element => {
     if (setSearchTerm) setSearchTerm(option);
   };
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 26 }}>
+    <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 26 }}>
       <Grid item>
         <Dropdown
           dropdownName="Cuisine"
