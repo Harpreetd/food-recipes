@@ -6,7 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.img-large {
+  /* min-height: 50%; */
+  max-height: 100%;
+  width: 100%;
+}
 .logo {
   width: 50px;
   height: 50px;

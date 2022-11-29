@@ -1,3 +1,4 @@
+import { Container, Grid } from "@mui/material";
 import React, { FC } from "react";
 import { useParams } from "react-router-dom";
 import IngredientList from "../Components/IngredientList/IngredientList";
@@ -10,28 +11,44 @@ const SingleMeal: FC = () => {
   const { id } = useParams<string>();
 
   return (
-    <div>
-      SingleMeal
-      <h1>{id}</h1>
-      {Array.isArray(meals)
-        ? meals.map((meal: IMeals, index: number) => {
-            if (meal.idMeal === id) {
-              return (
-                <div key={index}>
-                  <div>
-                    <img src={meal.strMealThumb} alt={meal.strMeal} />
-                  </div>
-                  <h3>{meal.strMeal}</h3>
-                  <h3>{meal.strArea}</h3>
-                  <p>{meal.strInstructions}</p>
-                  <IngredientList strIngredients={meal.strIngredients} />
-                </div>
-              );
-            }
-            return null;
-          })
-        : "No Data Available"}
-    </div>
+    <Container maxWidth="xl" sx={{ paddingTop: 9 }}>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {Array.isArray(meals)
+          ? meals.map((meal: IMeals, index: number) => {
+              if (meal.idMeal === id) {
+                return (
+                  <>
+                    <Grid item xs={2} sm={4} md={4} key={index}>
+                      <img
+                        src={meal.strMealThumb}
+                        alt={meal.strMeal}
+                        className="img-large"
+                      />
+                    </Grid>
+                    <Grid item>
+                      <h3>{meal.strMeal}</h3>
+                    </Grid>
+                    <Grid item>
+                      <h3>{meal.strArea}</h3>
+                    </Grid>
+                    <Grid item>
+                      <p>{meal.strInstructions}</p>
+                    </Grid>
+                    <Grid item>
+                      <IngredientList strIngredients={meal.strIngredients} />
+                    </Grid>
+                  </>
+                );
+              }
+              return null;
+            })
+          : "No Data Available"}
+      </Grid>
+    </Container>
   );
 };
 

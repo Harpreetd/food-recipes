@@ -6,7 +6,6 @@ import SingleMeal from "./Pages/SingleMeal";
 import Error from "./Pages/Error";
 import Navbar from "./Components/Navbar/Navbar";
 
-import "./App.css";
 import About from "./Pages/About";
 import { Container, Stack } from "@mui/material";
 

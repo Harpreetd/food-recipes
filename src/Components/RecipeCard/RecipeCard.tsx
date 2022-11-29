@@ -66,7 +66,7 @@ const RecipeCard = ({
       />
       <CardMedia
         component="img"
-        height="194"
+        height="200"
         image={strMealThumb}
         alt={strMeal}
       />
@@ -79,12 +79,6 @@ const RecipeCard = ({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton> */}
-        {/* {unreadMessages.length > 0 && (
-          <h2>You have {unreadMessages.length} unread messages.</h2>
-        )} */}
         {idMeal.includes("52") ? (
           <Rating name="read-only" value={3} readOnly />
         ) : (
