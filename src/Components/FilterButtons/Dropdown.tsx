@@ -20,7 +20,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
   return (
     <>
-      <FormControl variant="outlined" sx={{ width: 200 }}>
+      <FormControl variant="outlined" sx={{ minWidth: 345 }}>
         <InputLabel htmlFor="custom-select">{dropdownName}</InputLabel>
         <Select
           defaultValue=""

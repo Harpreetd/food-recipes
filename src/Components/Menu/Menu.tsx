@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../FilterButtons/Dropdown";
@@ -36,32 +36,36 @@ const Menu: React.FC = (): JSX.Element => {
     if (setSearchTerm) setSearchTerm(option);
   };
   return (
-    <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 26 }}>
-      <Grid item>
-        <Dropdown
-          dropdownName="Cuisine"
-          options={countryList}
-          showDropdown={false}
-          optionSelection={countrySelection}
-        />
+    // <Box alignItems="center" justifyContent="center">
+    <Container maxWidth="lg">
+      <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={2} sm={4} md={4}>
+          <Dropdown
+            dropdownName="Cuisine"
+            options={countryList}
+            showDropdown={false}
+            optionSelection={countrySelection}
+          />
+        </Grid>
+        <Grid item xs={2} sm={4} md={4}>
+          <Dropdown
+            dropdownName="Category"
+            options={categoryList}
+            showDropdown={false}
+            optionSelection={categorySelection}
+          />
+        </Grid>
+        <Grid item xs={2} sm={4} md={4}>
+          <Dropdown
+            dropdownName="Ingredient"
+            options={ingredientList}
+            showDropdown={false}
+            optionSelection={ingredientSelection}
+          />
+        </Grid>
       </Grid>
-      <Grid item>
-        <Dropdown
-          dropdownName="Category"
-          options={categoryList}
-          showDropdown={false}
-          optionSelection={categorySelection}
-        />
-      </Grid>
-      <Grid item>
-        <Dropdown
-          dropdownName="Ingredient"
-          options={ingredientList}
-          showDropdown={false}
-          optionSelection={ingredientSelection}
-        />
-      </Grid>
-    </Grid>
+    </Container>
+    // </Box>
   );
 };
 
