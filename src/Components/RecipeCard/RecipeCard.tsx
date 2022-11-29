@@ -45,7 +45,7 @@ const RecipeCard = ({
   strIngredients,
 }: IMeals) => {
   const [expanded, setExpanded] = React.useState(false);
-  console.log(strIngredients);
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -78,9 +78,9 @@ const RecipeCard = ({
           {Array.isArray(strIngredients)
             ? strIngredients.map((ingredient: string) => <li>{ingredient}</li>)
             : "empty list"}
-          {strIngredients.forEach(function (ingredient: string) {
+          {/* {strIngredients.forEach(function (ingredient: string) {
             <li>{ingredient}</li>;
-          })}
+          })} */}
           <Link to={`/meals/${idMeal}`}>Details</Link>
         </Typography>
       </CardContent>

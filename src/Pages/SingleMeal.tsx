@@ -33,25 +33,9 @@ const SingleMeal: FC = () => {
                 <h3>{meal.strMeal}</h3>
                 <h3>{meal.strArea}</h3>
                 <p>{meal.strInstructions}</p>
+                {/* <p>{meal.strIngredients.strIngredient10}</p> */}
                 <IngredientList
-                  strIngredients={{
-                    strIngredient1: undefined,
-                    strIngredient2: undefined,
-                    strIngredient3: undefined,
-                    strIngredient4: undefined,
-                    strIngredient5: undefined,
-                    strIngredient6: undefined,
-                    strIngredient7: undefined,
-                    strIngredient8: undefined,
-                    strIngredient9: undefined,
-                    strIngredient10: undefined,
-                    strIngredient11: undefined,
-                    strIngredient12: undefined,
-                    strIngredient13: undefined,
-                    strIngredient14: undefined,
-                    strIngredient15: undefined,
-                    strIngredient16: undefined,
-                  }}
+                  strIngredients={meal.strIngredients}
                   idMeal={""}
                   strArea={""}
                   strCategory={""}
