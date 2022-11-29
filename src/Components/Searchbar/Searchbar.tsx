@@ -1,7 +1,5 @@
 import React from "react";
-import { FormControl, Input, InputLabel } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 
@@ -49,14 +47,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 const Searchbar = () => {
-  const { setSearchTerm, meals } = useGlobalContext();
+  const { setSearchTerm } = useGlobalContext();
   const searchValue = React.useRef<HTMLInputElement>(null);
   const searchMeal = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (setSearchTerm) setSearchTerm(event.target.value);
   };
-  // const handleSubmit = (e: Event) => {
-  //   e.preventDefault();
-  // };
   return (
     <Search>
       <SearchIconWrapper>

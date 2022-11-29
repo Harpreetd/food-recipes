@@ -14,7 +14,7 @@ const initialUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const AppProvider = ({ children }: { children: ReactNode }) => {
   const [url, setUrl] = useState<string>(initialUrl);
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchTerm, setSearchTerm] = useState<string>("a");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
   const [country, setCountry] = useState<ICountry[] | []>([]);
   const [category, setCategory] = useState<ICategory[] | []>([]);
@@ -23,7 +23,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
-      console.log("url updated", url, searchTerm);
+      console.log("url updated when search term is changed", url, searchTerm);
       const data = await response.json();
       const { meals } = data;
       if (meals) {
@@ -93,12 +93,12 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       console.log(error);
       setLoading(false);
     }
-  }, [searchTerm]);
+  }, [searchTerm, url]);
 
   useEffect(() => {
     fetchMeals();
-    console.log("url after fetchmeal", url);
     return setUrl(initialUrl);
+    // eslint-disable-next-line
   }, [searchTerm]);
 
   // fetching from multiple endpoints
@@ -106,7 +106,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     getAll();
   }, []);
   const getAll: any = () => {
-    const allPromises = Promise.all([
+    Promise.all([
       fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list").then(
         (res) => res.json()
       ),

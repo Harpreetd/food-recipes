@@ -11,15 +11,8 @@ const Home: FC = () => {
   }, []);
   return (
     <Container maxWidth="xl">
-      {/* <Grid rowSpacing={30}>
-        <Grid item> */}
       <Menu />
-      {/* </Grid>
-        <Grid item> */}
-
       <RecipeList />
-      {/* </Grid>
-      </Grid> */}
     </Container>
   );
 };

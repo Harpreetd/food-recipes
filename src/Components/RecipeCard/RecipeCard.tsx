@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { red } from "@mui/material/colors";
-import { IconButtonProps } from "@mui/material/IconButton";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Link } from "react-router-dom";
 import { ExpandMoreProps, IMeals } from "../../Interface/Interface";
@@ -71,10 +70,10 @@ const RecipeCard = ({
         alt={strMeal}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography component={"div"} color="text.secondary">
           {strArea}
           <IngredientList strIngredients={strIngredients} />
-         
+
           <Link to={`/meals/${idMeal}`}>Details</Link>
         </Typography>
       </CardContent>
