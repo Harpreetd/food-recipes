@@ -6,7 +6,7 @@ import { useGlobalContext } from "../Context/AppContext";
 import { IMeals } from "../Interface/Interface";
 const newUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 const SingleMeal: FC = () => {
-  const { url, setUrl, setSearchTerm, meals } = useGlobalContext();
+  const { setUrl, setSearchTerm, meals } = useGlobalContext();
 
   const { id } = useParams<string>();
   useEffect(() => {
@@ -33,19 +33,8 @@ const SingleMeal: FC = () => {
                 <h3>{meal.strMeal}</h3>
                 <h3>{meal.strArea}</h3>
                 <p>{meal.strInstructions}</p>
-                {/* <p>{meal.strIngredients.strIngredient10}</p> */}
-                <IngredientList
-                  strIngredients={meal.strIngredients}
-                  idMeal={""}
-                  strArea={""}
-                  strCategory={""}
-                  strInstructions={""}
-                  strMeal={""}
-                  strMealThumb={""}
-                  strSource={""}
-                  strTags={""}
-                  strYoutube={""}
-                />
+
+                <IngredientList strIngredients={meal.strIngredients} />
               </div>
             );
           })

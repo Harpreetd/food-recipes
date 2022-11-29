@@ -16,12 +16,10 @@ import { red } from "@mui/material/colors";
 import { IconButtonProps } from "@mui/material/IconButton";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Link } from "react-router-dom";
-import { IMeals } from "../../Interface/Interface";
+import { ExpandMoreProps, IMeals } from "../../Interface/Interface";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
+import IngredientList from "../IngredientList/IngredientList";
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -45,7 +43,7 @@ const RecipeCard = ({
   strIngredients,
 }: IMeals) => {
   const [expanded, setExpanded] = React.useState(false);
-  
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -75,12 +73,8 @@ const RecipeCard = ({
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {strArea}
-          {Array.isArray(strIngredients)
-            ? strIngredients.map((ingredient: string) => <li>{ingredient}</li>)
-            : "empty list"}
-          {/* {strIngredients.forEach(function (ingredient: string) {
-            <li>{ingredient}</li>;
-          })} */}
+          <IngredientList strIngredients={strIngredients} />
+         
           <Link to={`/meals/${idMeal}`}>Details</Link>
         </Typography>
       </CardContent>

@@ -1,3 +1,23 @@
+import { IconButtonProps } from "@mui/material";
+
+export interface IAllIngredients {
+  strIngredient1: string;
+  strIngredient2: string;
+  strIngredient3: string;
+  strIngredient4: string;
+  strIngredient5: string;
+  strIngredient6: string;
+  strIngredient7: string;
+  strIngredient8: string;
+  strIngredient9: string;
+  strIngredient10: string;
+  strIngredient11: string;
+  strIngredient12: string;
+  strIngredient13: string;
+  strIngredient14: string;
+  strIngredient15: string;
+  strIngredient16: string;
+}
 export interface IMeals {
   idMeal: string;
   strArea: string;
@@ -8,25 +28,7 @@ export interface IMeals {
   strSource: string;
   strTags: string;
   strYoutube: string;
-  strIngredients: {
-    [x: string]: any;
-    strIngredient1: string;
-    strIngredient2: string;
-    strIngredient3: string;
-    strIngredient4: string;
-    strIngredient5: string;
-    strIngredient6: string;
-    strIngredient7: string;
-    strIngredient8: string;
-    strIngredient9: string;
-    strIngredient10: string;
-    strIngredient11: string;
-    strIngredient12: string;
-    strIngredient13: string;
-    strIngredient14: string;
-    strIngredient15: string;
-    strIngredient16: string;
-  };
+  strIngredients: IAllIngredients;
   // strIngredient1: string;
   // strIngredient2: string;
   // strIngredient3: string;
@@ -81,4 +83,7 @@ export interface IDropdownProps {
   showDropdown: boolean;
   optionSelection: Function;
   dropdownName: string;
+}
+export interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
 }
