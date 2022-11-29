@@ -23,10 +23,11 @@ const Navbar: FC = () => {
             <img src="/cook-book.png" alt="cook book logo" className="logo" />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="h3"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            className="logoText "
           >
             My Cook Book
           </Typography>

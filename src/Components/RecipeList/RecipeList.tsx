@@ -6,6 +6,7 @@ import { useGlobalContext } from "../../Context/AppContext";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 import Loading from "../Loading/Loading";
+import NoResult from "../NoResult/NoResult";
 
 const RecipeList = () => {
   const { meals, loading } = useGlobalContext();
@@ -13,7 +14,7 @@ const RecipeList = () => {
     return <Loading />;
   }
   if (meals && meals.length < 1) {
-    return <h2>"no meals"</h2>;
+    return <NoResult />;
   }
   return (
     <Container maxWidth="lg" sx={{ paddingTop: 7 }}>
