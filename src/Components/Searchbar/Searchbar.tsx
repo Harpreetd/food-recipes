@@ -54,9 +54,9 @@ const Searchbar = () => {
   const searchMeal = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (setSearchTerm) setSearchTerm(event.target.value);
   };
-  const handleSubmit = (e: Event) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e: Event) => {
+  //   e.preventDefault();
+  // };
   return (
     <Search>
       <SearchIconWrapper>

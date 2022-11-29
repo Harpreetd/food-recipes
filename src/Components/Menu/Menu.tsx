@@ -37,7 +37,7 @@ const Menu: React.FC = (): JSX.Element => {
   };
   return (
     // <Box alignItems="center" justifyContent="center">
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ marginTop: 10 }}>
       <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={2} sm={4} md={4}>
           <Dropdown

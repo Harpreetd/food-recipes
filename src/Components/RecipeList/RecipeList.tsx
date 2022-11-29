@@ -1,22 +1,22 @@
 import React from "react";
-import { IMeals, IRecipeListProps } from "../../Interface/Interface";
-// import { MealApiResponse } from "../../Interface/Interface";
+import { IMeals } from "../../Interface/Interface";
+
 import RecipeCard from "../RecipeCard/RecipeCard";
 import { useGlobalContext } from "../../Context/AppContext";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
-// import { Interface } from "readline";
+import Loading from "../Loading/Loading";
 
 const RecipeList = () => {
   const { meals, loading } = useGlobalContext();
   if (loading) {
-    return <h2>"laoding..."</h2>;
+    return <Loading />;
   }
   if (meals && meals.length < 1) {
     return <h2>"no meals"</h2>;
   }
   return (
-    <Container maxWidth="lg" sx={{ paddingTop: 10 }}>
+    <Container maxWidth="lg" sx={{ paddingTop: 7 }}>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
