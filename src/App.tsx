@@ -11,8 +11,8 @@ import { Container, Stack } from "@mui/material";
 
 const App = () => {
   return (
-    <Container maxWidth="xl">
-      <Stack spacing={2}>
+    <Container disableGutters maxWidth={false}>
+      <Stack spacing={2} sx={{ padding: 0 }}>
         <Router>
           <Navbar />
           <Routes>
