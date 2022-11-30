@@ -31,7 +31,7 @@ const Navbar: FC = () => {
           >
             My Cook Book
           </Typography>
-          <Searchbar />
+          {/* <Searchbar /> */}
         </Toolbar>
       </AppBar>
     </Box>

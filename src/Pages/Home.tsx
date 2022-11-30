@@ -2,7 +2,7 @@ import { Container, Box } from "@mui/material";
 import React, { FC, useEffect } from "react";
 import Menu from "../Components/Menu/Menu";
 import RecipeList from "../Components/RecipeList/RecipeList";
-import Searchbar from "../Components/Searchbar/Searchbar";
+
 import Landing from "../Components/Landing/Landing";
 import { useGlobalContext } from "../Context/AppContext";
 const Home: FC = () => {
@@ -12,14 +12,14 @@ const Home: FC = () => {
   //   return;
   // }, []);
   return (
-    <Box sx={{ flexGrow: 1, padding: 0 }}>
+    <Container disableGutters maxWidth={false}>
       <Landing />
-      <Container maxWidth="xl">
-        <Searchbar />
+      <Container maxWidth="xl" sx={{ padding: 0 }}>
+        
         <Menu />
         <RecipeList />
       </Container>
-    </Box>
+    </Container>
   );
 };
 

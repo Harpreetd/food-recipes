@@ -1,10 +1,17 @@
 import React from "react";
+import Searchbar from "../Searchbar/Searchbar";
 import { Container, Box } from "@mui/material";
 const Landing = () => {
   return (
-    <Box sx={{ flexGrow: 1, height: 1500 }}>
-      <div className="backgroundImg"></div>
-    </Box>
+    <Container
+      sx={{ flexGrow: 1, height: 600 }}
+      disableGutters
+      maxWidth={false}
+    >
+      <div className="backgroundImg">
+        <Searchbar />
+      </div>
+    </Container>
   );
 };
 
