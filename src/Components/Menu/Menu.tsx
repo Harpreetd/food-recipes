@@ -29,7 +29,7 @@ const Menu: React.FC = (): JSX.Element => {
     if (setSearchTerm) setSearchTerm(option);
   };
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 0 }}>
+    <Container maxWidth="lg" sx={{ marginTop: 5 }}>
       <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 5 }}>
         <Grid item xs={2} sm={4} md={4}>
           <Dropdown

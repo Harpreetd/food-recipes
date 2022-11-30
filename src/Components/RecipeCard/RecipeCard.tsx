@@ -12,14 +12,11 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import { red } from "@mui/material/colors";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Link } from "react-router-dom";
 import { ExpandMoreProps, IMeals } from "../../Interface/Interface";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import IngredientList from "../IngredientList/IngredientList";
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -39,8 +36,6 @@ const RecipeCard = ({
   strMealThumb,
   strArea,
   strInstructions,
-
-  strIngredients,
 }: IMeals) => {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -56,13 +51,8 @@ const RecipeCard = ({
             <RestaurantIcon />
           </Avatar>
         }
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
         title={strMeal}
-        subheader={strCategory}
+        subheader={strArea}
       />
       <CardMedia
         component="img"
@@ -72,34 +62,18 @@ const RecipeCard = ({
       />
       <CardContent>
         <Typography component={"div"} color="text.secondary">
-          {strArea}
-          <IngredientList strIngredients={strIngredients} />
-
-          <Link to={`/meals/${idMeal}`}>Details</Link>
+          <h4>Category : {strCategory}</h4>
+          {strInstructions.substring(0, 100)}
+          <Link to={`/meals/${idMeal}`}>...Read more</Link>
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         {idMeal.includes("52") ? (
           <Rating name="read-only" value={3} readOnly />
         ) : (
           <Rating name="read-only" value={4} readOnly />
         )}
-
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>{strInstructions}</Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 };

@@ -53,6 +53,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             strIngredient14,
             strIngredient15,
             strIngredient16,
+            strIngredient17,
+            strIngredient18,
+            strIngredient19,
+            strIngredient20,
           } = item;
           return {
             idMeal,
@@ -81,6 +85,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
               strIngredient14,
               strIngredient15,
               strIngredient16,
+              strIngredient17,
+              strIngredient18,
+              strIngredient19,
+              strIngredient20,
             ],
           };
         });
