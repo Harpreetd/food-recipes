@@ -6,28 +6,14 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  Collapse,
-  IconButton,
   Rating,
-  styled,
   Typography,
 } from "@mui/material";
 
 import { red } from "@mui/material/colors";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Link } from "react-router-dom";
-import { ExpandMoreProps, IMeals } from "../../Interface/Interface";
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { IMeals } from "../../Interface/Interface";
 
 const RecipeCard = ({
   idMeal,
@@ -35,14 +21,8 @@ const RecipeCard = ({
   strCategory,
   strMealThumb,
   strArea,
-  strInstructions,
+  strCategoryDescription,
 }: IMeals) => {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   return (
     <Card>
       <CardHeader
@@ -63,8 +43,10 @@ const RecipeCard = ({
       <CardContent>
         <Typography component={"div"} color="text.secondary">
           <h4>Category : {strCategory}</h4>
-          {strInstructions.substring(0, 100)}
-          <Link to={`/meals/${idMeal}`}>...Read more</Link>
+          {strCategoryDescription}
+          <Link to={`/meals/${idMeal}`} className="links">
+            {"... Read more"}
+          </Link>
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>

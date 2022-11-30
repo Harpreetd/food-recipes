@@ -1,5 +1,3 @@
-import { IconButtonProps } from "@mui/material";
-
 export interface IAllIngredients {
   strIngredient1: string;
   strIngredient2: string;
@@ -33,13 +31,7 @@ export interface IMeals {
   strTags: string;
   strYoutube: string;
   strIngredients: IAllIngredients;
-  // strIngredient1: string;
-  // strIngredient2: string;
-  // strIngredient3: string;
-  // strIngredient4: string;
-  // strIngredient5: string;
-  // strIngredient6: string;
-  // strIngredient7: string;
+  strCategoryDescription?: string;
 }
 export interface ICountry {
   strArea?: string;
@@ -51,12 +43,7 @@ export interface IIngredient {
   strIngredient?: string;
 }
 
-// export interface IDropdownOptions {
-//   [key: string]: string;
-// }
-
 export interface IMealApiResponse {
-  //
   loading: boolean;
   filter?: any;
   searchTerm: string;
@@ -87,7 +74,4 @@ export interface IDropdownProps {
   showDropdown: boolean;
   optionSelection: Function;
   dropdownName: string;
-}
-export interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
 }

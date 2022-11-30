@@ -17,6 +17,7 @@ const Menu: React.FC = (): JSX.Element => {
 
   const countrySelection = (option: string): void => {
     setSelectOption(option);
+    
     if (setUrl) setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=`);
     if (setSearchTerm) setSearchTerm(option);
   };

@@ -6,8 +6,6 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import React from "react";
-import { useState, useEffect } from "react";
-import { useGlobalContext } from "../../Context/AppContext";
 import { IDropdownProps } from "../../Interface/Interface";
 
 const Dropdown: React.FC<IDropdownProps> = ({
