@@ -12,7 +12,7 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.8),
   },
 
-  width: "50%",
+  width: "40%",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -30,9 +30,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "red",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
+
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    // transition: theme.transitions.create("width"),
   },
 }));
 const Searchbar = () => {
@@ -53,28 +52,7 @@ const Searchbar = () => {
         ref={searchValue}
         onChange={searchMeal}
       />
-      {/* <Input
-        type="search"
-        id="mealName"
-        ref={searchValue}
-        onChange={searchMeal}
-      ></Input> */}
     </Search>
-    // <section>
-    //   <FormControl
-    //     variant="outlined"
-    //     sx={{ width: 400 }}
-    //     onSubmit={() => handleSubmit}
-    //   >
-    //     <InputLabel htmlFor="mealName">Search Recipe Name</InputLabel>
-    //     <Input
-    //       type="search"
-    //       id="mealName"
-    //       ref={searchValue}
-    //       onChange={searchMeal}
-    //     ></Input>
-    //   </FormControl>
-    // </section>
   );
 };
 

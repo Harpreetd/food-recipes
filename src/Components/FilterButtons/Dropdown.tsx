@@ -20,7 +20,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
   return (
     <>
-      <FormControl variant="outlined" sx={{ minWidth: 345 }}>
+      <FormControl fullWidth={true}>
         <InputLabel htmlFor="custom-select">{dropdownName}</InputLabel>
         <Select
           defaultValue=""
@@ -28,10 +28,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
           id="custom-select"
           onChange={onChangeHandler}
           placeholder="cuisine"
+          sx={{ border: "none" }}
         >
           {Array.isArray(options)
             ? options.map((item, index) => {
-                // console.log(item);
                 return (
                   <MenuItem key={index} value={item}>
                     {item}
