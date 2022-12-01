@@ -1,18 +1,22 @@
 import { Container, Grid, Stack } from "@mui/material";
 import React, { FC, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import IngredientList from "../Components/IngredientList/IngredientList";
 import { useGlobalContext } from "../Context/AppContext";
 import { IMeals } from "../Interface/Interface";
+import ReplyIcon from "@mui/icons-material/Reply";
+let vedioId: string | undefined;
 
 const newUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 const SingleMeal: FC = () => {
-  const { meals, setUrl, setSearchTerm } = useGlobalContext();
+  const { meals, url, setUrl, setSearchTerm } = useGlobalContext();
 
   const { id } = useParams<string>();
+
   useEffect(() => {
     if (setUrl) setUrl(newUrl);
     if (setSearchTerm) setSearchTerm(`${id}`);
+    console.log(newUrl, id);
   });
 
   return (
@@ -25,9 +29,12 @@ const SingleMeal: FC = () => {
         {Array.isArray(meals)
           ? meals.map((meal: IMeals, index: number) => {
               if (meal.idMeal === id) {
-                const youtubeUrl = meal.strYoutube;
-                const splitUrl = youtubeUrl.split("=");
-                const vedioId = splitUrl[splitUrl.length - 1];
+                if (meal.strYoutube) {
+                  const youtubeUrl = meal.strYoutube;
+                  const splitUrl = youtubeUrl.split("=");
+                  vedioId = splitUrl[splitUrl.length - 1];
+                }
+
                 return (
                   <Container
                     maxWidth={false}
@@ -39,7 +46,7 @@ const SingleMeal: FC = () => {
                       spacing={{ xs: 2, md: 5 }}
                       columns={{ xs: 4, sm: 8, md: 10 }}
                     >
-                      <Grid item xs={2} sm={3} md={3}>
+                      <Grid item xs={2} sm={3} md={4}>
                         <img
                           src={meal.strMealThumb}
                           alt={meal.strMeal}
@@ -61,6 +68,12 @@ const SingleMeal: FC = () => {
                         <h4>Measures:</h4>
                         <IngredientList props={meal.strMeasures} />
                       </Grid>
+                      {/* <Grid item>
+                        <Link to="/" className="links">
+                          Home
+                          <ReplyIcon />
+                        </Link>
+                      </Grid> */}
                       <Grid item>
                         <h4>Method: </h4>
                         <p>{meal.strInstructions}</p>
@@ -68,9 +81,11 @@ const SingleMeal: FC = () => {
                       <Grid item>{meal.strYoutube}</Grid>
                     </Grid>
                     <Grid item>
-                      <iframe
-                        src={`https://www.youtube.com/embed/${vedioId}`}
-                      ></iframe>
+                      {vedioId !== undefined && (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${vedioId}`}
+                        ></iframe>
+                      )}
                     </Grid>
                   </Container>
                 );
