@@ -1,7 +1,4 @@
-export interface IAllIngredients {
-  [key: string]: string | null;
-}
-export interface IMeasures {
+export interface IListItems {
   [key: string]: string | null;
 }
 export interface IMeals {
@@ -14,18 +11,8 @@ export interface IMeals {
   strSource: string;
   strTags: string;
   strYoutube: string;
-  strIngredients: IAllIngredients;
-  strMeasures: IMeasures;
-  strCategoryDescription?: string;
-}
-export interface ICountry {
-  strArea: string;
-}
-export interface ICategory {
-  strCategory: string;
-}
-export interface IIngredient {
-  strIngredient: string;
+  strIngredients: IListItems;
+  strMeasures: IListItems;
 }
 
 export interface IMealApiResponse {
@@ -34,9 +21,9 @@ export interface IMealApiResponse {
   searchTerm: string;
   setSearchTerm: Function;
   meals: IMeals[];
-  country: ICountry[];
-  category: ICategory[];
-  ingredient: IIngredient[];
+  country: IListItems[];
+  category: IListItems[];
+  ingredient: IListItems[];
   url: string;
   setUrl: Function;
   children?: JSX.Element | JSX.Element[];

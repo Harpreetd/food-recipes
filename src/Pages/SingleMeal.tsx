@@ -51,10 +51,10 @@ const SingleMeal: FC = () => {
                         />
                       </Grid>
                       <Grid item xs={2}>
-                        <Link to="/" className="links">
+                        <a href="/" className="links">
                           Home
                           <ReplyIcon />
-                        </Link>
+                        </a>
                         <h1>
                           {meal.strMeal} ({meal.strArea})
                         </h1>

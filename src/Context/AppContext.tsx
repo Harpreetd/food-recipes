@@ -1,13 +1,7 @@
 import React, { useState, useContext, useEffect, ReactNode } from "react";
 import { useCallback } from "react";
 
-import {
-  ICategory,
-  ICountry,
-  IIngredient,
-  IMealApiResponse,
-  IMeals,
-} from "../Interface/Interface";
+import { IListItems, IMealApiResponse, IMeals } from "../Interface/Interface";
 
 const AppContext = React.createContext<Partial<IMealApiResponse>>([]);
 const initialUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
@@ -16,9 +10,9 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [meals, setMeals] = useState<IMeals[] | []>([]);
-  const [country, setCountry] = useState<ICountry[] | []>([]);
-  const [category, setCategory] = useState<ICategory[] | []>([]);
-  const [ingredient, setIngredient] = useState<IIngredient[] | []>([]);
+  const [country, setCountry] = useState<IListItems[] | []>([]);
+  const [category, setCategory] = useState<IListItems[] | []>([]);
+  const [ingredient, setIngredient] = useState<IListItems[] | []>([]);
   const fetchMeals = useCallback(async () => {
     setLoading(true);
     try {
@@ -56,7 +50,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             strIngredient18,
             strIngredient19,
             strIngredient20,
-            strCategoryDescription,
+
             strMeasure1,
             strMeasure2,
             strMeasure3,
@@ -108,7 +102,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
               strIngredient18,
               strIngredient19,
               strIngredient20,
-              strCategoryDescription,
             ],
             strMeasures: [
               strMeasure1,
