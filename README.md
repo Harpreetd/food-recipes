@@ -10,10 +10,10 @@ The assignment was to create an application that retrieves recipes from TheMealD
 
 filters to retriev recipes from the database:
 
-- Some defualt recipes on the landing page
-- Retreiving recipes by searching recipe by name
+- Some default recipes on the landing page
+- Retrieving recipes by searching recipe by name
 - Filtering the recipes on basis of their country of origin (under Cuisine dropdown ).
-- Filtering the recipes on basis of their category (eg. vegetarian,vegan,etc under Category dropdown)
+- Filtering the recipes on basis of their category (eg. vegetarian, vegan, etc. under Category dropdown)
 - Filtering the recipes on basis of the ingredients name (under dropdown Ingredient)
 - Each of the recipe opens on a new page when clicked on "Get Full recipe" and shows the detailed recipe.(including ingredients ,methods of preparationa and Youtube vedio(if available))
 
