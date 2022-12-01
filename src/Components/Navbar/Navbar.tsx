@@ -20,7 +20,9 @@ const Navbar: FC = () => {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <img src="/cook-book.png" alt="cook book logo" className="logo" />
+            <a href="/">
+              <img src="/cook-book.png" alt="cook book logo" className="logo" />
+            </a>
           </IconButton>
           <Typography
             variant="h3"

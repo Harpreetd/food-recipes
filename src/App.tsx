@@ -7,6 +7,7 @@ import Error from "./Pages/Error";
 import Navbar from "./Components/Navbar/Navbar";
 
 import { Container, Stack } from "@mui/material";
+import Category from "./Pages/Category";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/category" element={<Category />} />
             <Route path="/meals/:id" element={<SingleMeal />} />
             <Route path="*" element={<Error />} />
           </Routes>

@@ -1,14 +1,19 @@
 import { Container, Grid } from "@mui/material";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import IngredientList from "../Components/IngredientList/IngredientList";
 import { useGlobalContext } from "../Context/AppContext";
 import { IMeals } from "../Interface/Interface";
 
+const newUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 const SingleMeal: FC = () => {
-  const { meals } = useGlobalContext();
+  const { meals, setUrl, setSearchTerm } = useGlobalContext();
 
   const { id } = useParams<string>();
+  useEffect(() => {
+    if (setUrl) setUrl(newUrl);
+    if (setSearchTerm) setSearchTerm(`${id}`);
+  });
 
   return (
     <Container maxWidth="xl" sx={{ paddingTop: 9 }}>
