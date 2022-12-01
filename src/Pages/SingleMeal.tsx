@@ -70,14 +70,14 @@ const SingleMeal: FC = () => {
                         <IngredientList props={meal.strMeasures} />
                       </Grid>
                     </Grid>
-                    <Grid item sx={{ paddingLeft: 20 }}>
-                      <a href={`${meal.strYoutube}`} target="_blank">
-                        {meal.strYoutube}
-                      </a>
-                    </Grid>
                     <Grid item sx={{ padding: 20, paddingTop: 5 }}>
                       <h4>Method: </h4>
                       <p>{meal.strInstructions}</p>
+                      <Grid item>
+                        <a href={`${meal.strYoutube}`} target="_blank">
+                          {meal.strYoutube}
+                        </a>
+                      </Grid>
                     </Grid>
                     <Grid item>
                       {vedioId !== undefined && (
