@@ -40,7 +40,6 @@ const Menu: React.FC = (): JSX.Element => {
           <Dropdown
             dropdownName="Filter by Cuisine"
             options={countryList}
-            showDropdown={false}
             optionSelection={countrySelection}
           />
         </Grid>
@@ -48,7 +47,6 @@ const Menu: React.FC = (): JSX.Element => {
           <Dropdown
             dropdownName="Filter by Category"
             options={categoryList}
-            showDropdown={false}
             optionSelection={categorySelection}
           />
         </Grid>
@@ -56,7 +54,6 @@ const Menu: React.FC = (): JSX.Element => {
           <Dropdown
             dropdownName="Filter by Ingredient"
             options={ingredientList}
-            showDropdown={false}
             optionSelection={ingredientSelection}
           />
         </Grid>

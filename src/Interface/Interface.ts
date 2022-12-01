@@ -29,17 +29,8 @@ export interface IMealApiResponse {
   children?: JSX.Element | JSX.Element[];
 }
 
-export interface IRecipeCardProps {
-  id: string;
-  name: string;
-  category: string;
-  image: string;
-  area: string;
-}
-
 export interface IDropdownProps {
   options?: string[];
-  showDropdown: boolean;
   optionSelection: Function;
   dropdownName: string;
 }
