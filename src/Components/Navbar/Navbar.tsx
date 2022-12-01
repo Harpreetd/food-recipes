@@ -1,11 +1,9 @@
 import React, { FC } from "react";
-
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
 
 const Navbar: FC = () => {
   return (
@@ -30,13 +28,8 @@ const Navbar: FC = () => {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             className="logoText "
           >
-            My Cook Book
+            Cook Book
           </Typography>
-          {/* <ul className="nav-links">
-            <li>
-              <Link to="/">home</Link>
-            </li>
-          </ul> */}
         </Toolbar>
       </AppBar>
     </Box>

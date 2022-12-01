@@ -1,14 +1,10 @@
-import { Box, Container, Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../Dropdown/Dropdown";
+import { Box, Container, Grid } from "@mui/material";
 
 const Menu: React.FC = (): JSX.Element => {
   const [selectOption, setSelectOption] = useState<string>("");
-  // const [countrySelected, setCountrySelected] = useState<boolean>(false);
-  // const [categorySelected, setCategorySelected] = useState<boolean>(false);
-  // const [ingredientSelected, setIngredientSelected] = useState<boolean>(false);
-
   const { country, category, ingredient, setUrl, setSearchTerm } =
     useGlobalContext();
   const countryList: any = country && country.map((item) => item.strArea);
@@ -21,7 +17,6 @@ const Menu: React.FC = (): JSX.Element => {
 
   const countrySelection = (option: string): void => {
     setSelectOption(option);
-
     if (setUrl) setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=`);
     if (setSearchTerm) setSearchTerm(option);
   };
