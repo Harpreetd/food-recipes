@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
 import Dropdown from "../Dropdown/Dropdown";
-import { Box, Container, Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
-const Menu: React.FC = (): JSX.Element => {
-  const [selectOption, setSelectOption] = useState<string>("");
+const Menu: FC = (): JSX.Element => {
   const { country, category, ingredient, setUrl, setSearchTerm } =
     useGlobalContext();
   const countryList: any = country && country.map((item) => item.strArea);
@@ -16,7 +15,6 @@ const Menu: React.FC = (): JSX.Element => {
     ingredient && ingredient.map((item) => item.strIngredient);
 
   const countrySelection = (option: string): void => {
-    setSelectOption(option);
     if (setUrl) setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?a=`);
     if (setSearchTerm) setSearchTerm(option);
   };

@@ -50,6 +50,8 @@ Install dependencies by using
   npm install
 ```
 
+Run
+
 ```bash
   npm  start
 ```

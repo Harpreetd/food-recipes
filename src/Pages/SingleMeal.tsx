@@ -1,6 +1,6 @@
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import React, { FC, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import IngredientList from "../Components/IngredientList/IngredientList";
 import { useGlobalContext } from "../Context/AppContext";
 import { IMeals } from "../Interface/Interface";
@@ -9,13 +9,13 @@ let vedioId: string | undefined;
 
 const newUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 const SingleMeal: FC = () => {
-  const { meals, url, setUrl, setSearchTerm } = useGlobalContext();
-
+  const { meals, setUrl, setSearchTerm } = useGlobalContext();
   const { id } = useParams<string>();
 
   useEffect(() => {
     if (setUrl) setUrl(newUrl);
     if (setSearchTerm) setSearchTerm(`${id}`);
+    // eslint-disable-next-line
   }, [setSearchTerm, setUrl]);
 
   return (
@@ -60,7 +60,6 @@ const SingleMeal: FC = () => {
                         </h1>
                         <p>{meal.strCategory}</p>
                       </Grid>
-
                       <Grid item sx={{ paddingLeft: 6 }}>
                         <h4>Ingredients:</h4>
                         <IngredientList props={meal.strIngredients} />
@@ -73,11 +72,6 @@ const SingleMeal: FC = () => {
                     <Grid item sx={{ padding: 20, paddingTop: 5 }}>
                       <h4>Method: </h4>
                       <p>{meal.strInstructions}</p>
-                      <Grid item>
-                        <a href={`${meal.strYoutube}`} target="_blank">
-                          {meal.strYoutube}
-                        </a>
-                      </Grid>
                     </Grid>
                     <Grid item>
                       {vedioId !== undefined && (
