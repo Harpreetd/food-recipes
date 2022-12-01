@@ -5,9 +5,8 @@ import Home from "./Pages/Home";
 import SingleMeal from "./Pages/SingleMeal";
 import Error from "./Pages/Error";
 import Navbar from "./Components/Navbar/Navbar";
-
-import { Container, Stack } from "@mui/material";
 import Category from "./Pages/Category";
+import { Container, Stack } from "@mui/material";
 
 const App = () => {
   return (
