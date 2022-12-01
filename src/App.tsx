@@ -15,7 +15,6 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/category" element={<Category />} />
             <Route path="/meals/:id" element={<SingleMeal />} />
             <Route path="*" element={<Error />} />
           </Routes>
