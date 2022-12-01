@@ -1,4 +1,4 @@
-import { Container, Grid, Stack } from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import React, { FC, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import IngredientList from "../Components/IngredientList/IngredientList";
@@ -16,15 +16,16 @@ const SingleMeal: FC = () => {
   useEffect(() => {
     if (setUrl) setUrl(newUrl);
     if (setSearchTerm) setSearchTerm(`${id}`);
-    console.log(newUrl, id);
-  });
+  }, [setSearchTerm, setUrl]);
 
   return (
-    <Container maxWidth="xl" sx={{ paddingTop: 9 }}>
+    <Container maxWidth={false} sx={{ paddingTop: 9 }}>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
+        alignItems="center"
+        justifyContent="center"
       >
         {Array.isArray(meals)
           ? meals.map((meal: IMeals, index: number) => {
@@ -36,14 +37,10 @@ const SingleMeal: FC = () => {
                 }
 
                 return (
-                  <Container
-                    maxWidth={false}
-                    sx={{ paddingTop: 5 }}
-                    key={index}
-                  >
+                  <Container maxWidth={false} sx={{ padding: 5 }} key={index}>
                     <Grid
                       container
-                      spacing={{ xs: 2, md: 5 }}
+                      spacing={{ xs: 2, md: 10 }}
                       columns={{ xs: 4, sm: 8, md: 10 }}
                     >
                       <Grid item xs={2} sm={3} md={4}>
@@ -54,12 +51,16 @@ const SingleMeal: FC = () => {
                         />
                       </Grid>
                       <Grid item xs={2}>
+                        <Link to="/" className="links">
+                          Home
+                          <ReplyIcon />
+                        </Link>
                         <h1>
                           {meal.strMeal} ({meal.strArea})
                         </h1>
                         <p>{meal.strCategory}</p>
                       </Grid>
-                      <Grid></Grid>
+
                       <Grid item sx={{ paddingLeft: 6 }}>
                         <h4>Ingredients:</h4>
                         <IngredientList props={meal.strIngredients} />
@@ -68,22 +69,21 @@ const SingleMeal: FC = () => {
                         <h4>Measures:</h4>
                         <IngredientList props={meal.strMeasures} />
                       </Grid>
-                      {/* <Grid item>
-                        <Link to="/" className="links">
-                          Home
-                          <ReplyIcon />
-                        </Link>
-                      </Grid> */}
-                      <Grid item>
-                        <h4>Method: </h4>
-                        <p>{meal.strInstructions}</p>
-                      </Grid>
-                      <Grid item>{meal.strYoutube}</Grid>
+                    </Grid>
+                    <Grid item sx={{ paddingLeft: 20 }}>
+                      <a href={`${meal.strYoutube}`} target="_blank">
+                        {meal.strYoutube}
+                      </a>
+                    </Grid>
+                    <Grid item sx={{ padding: 20, paddingTop: 5 }}>
+                      <h4>Method: </h4>
+                      <p>{meal.strInstructions}</p>
                     </Grid>
                     <Grid item>
                       {vedioId !== undefined && (
                         <iframe
                           src={`https://www.youtube.com/embed/${vedioId}`}
+                          title={`${meal.strMeal}`}
                         ></iframe>
                       )}
                     </Grid>

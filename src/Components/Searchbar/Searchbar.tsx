@@ -2,9 +2,8 @@ import React from "react";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
-
 import { useGlobalContext } from "../../Context/AppContext";
-// import { Search } from "react-router-dom";
+
 const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.5),
@@ -30,7 +29,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "red",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
   },
 }));

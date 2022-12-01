@@ -23,7 +23,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${searchTerm}`);
-      console.log("url updated when search term is changed", url, searchTerm);
       const data = await response.json();
       const { meals } = data;
       if (meals) {
@@ -144,7 +143,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
       console.log(error);
       setLoading(false);
     }
-  }, [searchTerm, url]);
+  }, [searchTerm]);
 
   useEffect(() => {
     fetchMeals();

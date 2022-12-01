@@ -11,7 +11,7 @@ body {
   width: 100%;
 }
 .backgroundImg {
-  background: url("/public/background4.jpg");
+  background: url("/public/background.jpg");
   background-position: 0rem;
   background-size: cover;
   height: 100%;
@@ -23,6 +23,7 @@ body {
 .links {
   color: #ef5350;
   font-style: italic;
+
   text-decoration: none;
 }
 .links:hover {
