@@ -40,6 +40,10 @@ body {
   text-align: center;
   color: #000;
 }
+iframe {
+  height: 550px;
+  width: 100%;
+}
 .loader,
 .loader:before,
 .loader:after {

@@ -25,6 +25,9 @@ const SingleMeal: FC = () => {
         {Array.isArray(meals)
           ? meals.map((meal: IMeals, index: number) => {
               if (meal.idMeal === id) {
+                const youtubeUrl = meal.strYoutube;
+                const splitUrl = youtubeUrl.split("=");
+                const vedioId = splitUrl[splitUrl.length - 1];
                 return (
                   <Container
                     maxWidth={false}
@@ -36,7 +39,7 @@ const SingleMeal: FC = () => {
                       spacing={{ xs: 2, md: 5 }}
                       columns={{ xs: 4, sm: 8, md: 10 }}
                     >
-                      <Grid item xs={2} sm={4} md={4}>
+                      <Grid item xs={2} sm={3} md={3}>
                         <img
                           src={meal.strMealThumb}
                           alt={meal.strMeal}
@@ -47,6 +50,7 @@ const SingleMeal: FC = () => {
                         <h1>
                           {meal.strMeal} ({meal.strArea})
                         </h1>
+                        <p>{meal.strCategory}</p>
                       </Grid>
                       <Grid></Grid>
                       <Grid item sx={{ paddingLeft: 6 }}>
@@ -61,7 +65,12 @@ const SingleMeal: FC = () => {
                         <h4>Method: </h4>
                         <p>{meal.strInstructions}</p>
                       </Grid>
-                      <Grid item></Grid>
+                      <Grid item>{meal.strYoutube}</Grid>
+                    </Grid>
+                    <Grid item>
+                      <iframe
+                        src={`https://www.youtube.com/embed/${vedioId}`}
+                      ></iframe>
                     </Grid>
                   </Container>
                 );
