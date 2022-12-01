@@ -5,8 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-
-import Searchbar from "../Searchbar/Searchbar";
+import { Link } from "react-router-dom";
 
 const Navbar: FC = () => {
   return (
@@ -33,26 +32,14 @@ const Navbar: FC = () => {
           >
             My Cook Book
           </Typography>
-          {/* <Searchbar /> */}
+          {/* <ul className="nav-links">
+            <li>
+              <Link to="/">home</Link>
+            </li>
+          </ul> */}
         </Toolbar>
       </AppBar>
     </Box>
-    // <nav className="navbar">
-    //   <div className="nav-center">
-    //     <Link to="/">
-    //       <img src="cook-book.png" alt="cook book logo" className="logo" />
-    //       <h1>My Cook Book</h1>
-    //     </Link>
-    //     <ul className="nav-links">
-    //       <li>
-    //         <Link to="/">home</Link>
-    //       </li>
-    //       <li>
-    //         <Link to="/about">about</Link>
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </nav>
   );
 };
 

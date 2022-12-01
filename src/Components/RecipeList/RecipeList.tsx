@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { IMeals } from "../../Interface/Interface";
 
 import RecipeCard from "../RecipeCard/RecipeCard";
@@ -8,7 +8,7 @@ import { Container } from "@mui/material";
 import Loading from "../Loading/Loading";
 import NoResult from "../NoResult/NoResult";
 
-const RecipeList = () => {
+const RecipeList: FC = () => {
   const { meals, loading } = useGlobalContext();
   if (loading) {
     return <Loading />;

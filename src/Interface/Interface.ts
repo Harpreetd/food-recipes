@@ -1,24 +1,8 @@
 export interface IAllIngredients {
-  strIngredient1: string;
-  strIngredient2: string;
-  strIngredient3: string;
-  strIngredient4: string;
-  strIngredient5: string;
-  strIngredient6: string;
-  strIngredient7?: string;
-  strIngredient8?: string;
-  strIngredient9?: string;
-  strIngredient10?: string;
-  strIngredient11?: string;
-  strIngredient12?: string;
-  strIngredient13?: string;
-  strIngredient14?: string;
-  strIngredient15?: string;
-  strIngredient16?: string;
-  strIngredient17?: string;
-  strIngredient18?: string;
-  strIngredient19?: string;
-  strIngredient20?: string;
+  [key: string]: string | null;
+}
+export interface IMeasures {
+  [key: string]: string | null;
 }
 export interface IMeals {
   idMeal: string;
@@ -31,16 +15,17 @@ export interface IMeals {
   strTags: string;
   strYoutube: string;
   strIngredients: IAllIngredients;
+  strMeasures: IMeasures;
   strCategoryDescription?: string;
 }
 export interface ICountry {
-  strArea?: string;
+  strArea: string;
 }
 export interface ICategory {
-  strCategory?: string;
+  strCategory: string;
 }
 export interface IIngredient {
-  strIngredient?: string;
+  strIngredient: string;
 }
 
 export interface IMealApiResponse {
@@ -55,10 +40,6 @@ export interface IMealApiResponse {
   url: string;
   setUrl: Function;
   children?: JSX.Element | JSX.Element[];
-}
-
-export interface IRecipeListProps {
-  mealsList?: IMealApiResponse;
 }
 
 export interface IRecipeCardProps {

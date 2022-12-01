@@ -21,7 +21,6 @@ const RecipeCard = ({
   strCategory,
   strMealThumb,
   strArea,
-  strCategoryDescription,
 }: IMeals) => {
   return (
     <Card>
@@ -42,10 +41,10 @@ const RecipeCard = ({
       />
       <CardContent>
         <Typography component={"div"} color="text.secondary">
-          <h4>Category : {strCategory}</h4>
-          {strCategoryDescription}
+          <h4> {strCategory}</h4>
+
           <Link to={`/meals/${idMeal}`} className="links">
-            {"... Read more"}
+            {"Get full Recipe..."}
           </Link>
         </Typography>
       </CardContent>

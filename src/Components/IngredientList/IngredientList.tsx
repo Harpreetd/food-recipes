@@ -1,15 +1,20 @@
 import React from "react";
 
-const IngredientList = ({ strIngredients }: any) => {
+const IngredientList = ({ props }: any) => {
   return (
     <div>
-      {Array.isArray(strIngredients) ? (
-        strIngredients.map((ingredient: string, index: number) => (
-          <p key={index}>{ingredient}</p>
-        ))
+      {Array.isArray(props) ? (
+        props.map((item: string, index: number) => <p key={index}>{item}</p>)
       ) : (
         <p>"empty"</p>
       )}
+      {/* {Array.isArray(strMeasures) ? (
+        strMeasures.map((strMeasure: string, index: number) => (
+          <p key={index}>{strMeasure}</p>
+        ))
+      ) : (
+        <p>"empty"</p>
+      )} */}
     </div>
   );
 };
