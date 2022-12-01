@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../Context/AppContext";
-import Dropdown from "../FilterButtons/Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Menu: React.FC = (): JSX.Element => {
   const [selectOption, setSelectOption] = useState<string>("");

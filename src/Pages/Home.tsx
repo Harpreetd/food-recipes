@@ -1,15 +1,10 @@
-import { Container, Box } from "@mui/material";
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Menu from "../Components/Menu/Menu";
 import RecipeList from "../Components/RecipeList/RecipeList";
-
 import Landing from "../Components/Landing/Landing";
-import { useGlobalContext } from "../Context/AppContext";
+import { Container } from "@mui/material";
+
 const Home: FC = () => {
-  // const { setUrl } = useGlobalContext();
-  // useEffect(() => {
-  //   if (setUrl) setUrl("https://www.themealdb.com/api/json/v1/1/search.php?s=");
-  // });
   return (
     <Container disableGutters maxWidth={false}>
       <Landing />

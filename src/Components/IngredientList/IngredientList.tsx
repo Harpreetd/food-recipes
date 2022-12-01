@@ -8,13 +8,6 @@ const IngredientList = ({ props }: any) => {
       ) : (
         <p>"empty"</p>
       )}
-      {/* {Array.isArray(strMeasures) ? (
-        strMeasures.map((strMeasure: string, index: number) => (
-          <p key={index}>{strMeasure}</p>
-        ))
-      ) : (
-        <p>"empty"</p>
-      )} */}
     </div>
   );
 };
