@@ -1,4 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { IMeals } from "../../Interface/Interface";
+import { red } from "@mui/material/colors";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 import {
   Avatar,
   Card,
@@ -9,11 +13,6 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-
-import { red } from "@mui/material/colors";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import { Link } from "react-router-dom";
-import { IMeals } from "../../Interface/Interface";
 
 const RecipeCard = ({
   idMeal,
@@ -42,7 +41,6 @@ const RecipeCard = ({
       <CardContent>
         <Typography component={"div"} color="text.secondary">
           <h4> {strCategory}</h4>
-
           <Link to={`/meals/${idMeal}`} className="links">
             {"Get full Recipe..."}
           </Link>

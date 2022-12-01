@@ -23,13 +23,12 @@ const RecipeList: FC = () => {
         spacing={{ xs: 2, md: 5 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {Array.isArray(meals)
-          ? meals.map((meal: IMeals, index: number) => (
-              <Grid item xs={2} sm={4} md={4} key={index}>
-                <RecipeCard key={index} {...meal} />
-              </Grid>
-            ))
-          : "No Data Available"}
+        {Array.isArray(meals) &&
+          meals.map((meal: IMeals, index: number) => (
+            <Grid item xs={2} sm={4} md={4} key={index}>
+              <RecipeCard key={index} {...meal} />
+            </Grid>
+          ))}
       </Grid>
     </Container>
   );

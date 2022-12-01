@@ -1,35 +1,14 @@
 import React from "react";
+import { useGlobalContext } from "../../Context/AppContext";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { styled, alpha } from "@mui/material/styles";
-import { useGlobalContext } from "../../Context/AppContext";
-
-const Search = styled("div")(({ theme }) => ({
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.5),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.8),
-  },
-
-  width: "40%",
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  color: "red",
-  padding: theme.spacing(0, 2),
-  height: "5%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+import { styled } from "@mui/material/styles";
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "red",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: `calc(1em + ${theme.spacing(0)})`,
   },
 }));
 const Searchbar = () => {
@@ -39,18 +18,17 @@ const Searchbar = () => {
     if (setSearchTerm) setSearchTerm(event.target.value);
   };
   return (
-    <Search>
-      <SearchIconWrapper>
+    <div className="searchbar">
+      <div className="searchbarIcon-wrapper">
         <SearchIcon />
-      </SearchIconWrapper>
+      </div>
       <StyledInputBase
         placeholder="Search…"
-        inputProps={{ "aria-label": "search" }}
         id="mealName"
         ref={searchValue}
         onChange={searchMeal}
       />
-    </Search>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Searchbar from "../Searchbar/Searchbar";
-import { Container, Box } from "@mui/material";
-import Menu from "../Menu/Menu";
+import { Container } from "@mui/material";
+
 const Landing = () => {
   return (
     <Container
